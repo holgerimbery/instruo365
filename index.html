@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <title>instruo365</title>
+  <style>
+    *,
+    ::before,
+    ::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      border: 0;
+    }
+    
+    :root {
+      --primary-color: #0066cc;
+      --primary-dark: #004e9e;
+      --secondary-color: #555555;
+      --accent-color: #ff6b6b;
+      --bg-color: #ffffff;
+      --bg-alt: #f8f9fa;
+      --divider-color: #eeeeee;
+      --text-color: #333333;
+      --card-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      --transition: all 0.3s ease;
+    }
+    
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.7;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    
+    header, main, footer {
+      padding: 4rem 2rem;
+      text-align: center;
+      position: relative;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeSlideUp 1s ease-out forwards;
+    }
+    
+    header {
+      background: linear-gradient(135deg, var(--bg-color), var(--bg-alt));
+      padding: 6rem 2rem;
+      animation-delay: 0.2s;
+    }
+    
+    .divider {
+      width: 60%;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--divider-color), transparent);
+      margin: 4rem auto;
+    }
+    
+    h1 {
+      font-size: 3.8rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: -1px;
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    h2 {
+      font-size: 2.4rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    h2:after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -10px;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background-color: var(--primary-color);
+    }
+    
+    p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto 1.5rem auto;
+      color: var(--secondary-color);
+    }
+    
+    a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-weight: 500;
+      transition: var(--transition);
+    }
+    
+    a:hover {
+      color: var(--primary-dark);
+    }
+    
+    .team a {
+      display: block;
+      margin: 0.5rem 0;
+      font-size: 1.1rem;
+    }
+    
+    .graphic {
+      margin: 3rem 0 1rem 0;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeSlideUp 1s ease-out forwards;
+      animation-delay: 0.4s;
+    }
+    
+    .meaning {
+      margin-top: 1rem;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--secondary-color);
+    }
+    
+    .focus-areas {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .focus-areas div {
+      background: var(--bg-color);
+      border-radius: 12px;
+      padding: 2.5rem 2rem;
+      width: 280px;
+      transition: var(--transition);
+      box-shadow: var(--card-shadow);
+      border-bottom: 3px solid transparent;
+    }
+    
+    .focus-areas div:hover {
+      border-bottom: 3px solid var(--primary-color);
+      transform: translateY(-8px);
+    }
+    
+    .focus-areas div strong {
+      color: var(--primary-color);
+      font-size: 1.3rem;
+      display: block;
+      margin-bottom: 1rem;
+    }
+    
+    .team-members {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 3rem;
+    }
+    
+    .team-member {
+      flex: 0 1 300px;
+      padding: 2rem;
+      background: var(--bg-alt);
+      border-radius: 12px;
+      box-shadow: var(--card-shadow);
+      transition: var(--transition);
+    }
+    
+    .team-member:hover {
+      transform: translateY(-5px);
+    }
+    
+    .team-member img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--bg-color);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      transition: var(--transition);
+    }
+    
+    .team-member img:hover {
+      transform: scale(1.05);
+    }
+    
+    .team-member i {
+      color: var(--primary-color);
+      transition: var(--transition);
+    }
+    
+    .team-member i:hover {
+      color: var(--primary-dark);
+    }
+    
+    footer {
+      font-size: 0.9rem;
+      color: var(--secondary-color);
+      margin-top: 4rem;
+      background-color: var(--bg-alt);
+      padding: 3rem 2rem;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeSlideUp 1s ease-out forwards;
+      animation-delay: 1.2s;
+    }
+    
+    /* Form styles */
+    .contact {
+      background-color: var(--bg-alt);
+      padding: 3rem;
+      border-radius: 12px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .fs-form {
+      display: grid;
+      row-gap: 1.5rem;
+      text-align: left;
+    }
+    
+    .fs-label {
+      color: var(--text-color);
+      display: block;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+    }
+    
+    .fs-input, .fs-textarea {
+      border-radius: 8px;
+      border: 1px solid var(--divider-color);
+      padding: 12px 16px;
+      width: 100%;
+      font-size: 1rem;
+      transition: var(--transition);
+    }
+    
+    .fs-input:focus, .fs-textarea:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(0,102,204,0.2);
+      outline: none;
+    }
+    
+    .fs-textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+    
+    .fs-button {
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 8px;
+      padding: 12px 24px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+      width: auto;
+      margin-top: 1rem;
+    }
+    
+    .fs-button:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+    
+    #topBtn {
+      display: none;
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 99;
+      font-size: 18px;
+      background: var(--primary-color);
+      color: #fff;
+      border: none;
+      outline: none;
+      padding: 12px 16px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+    
+    #topBtn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px);
+    }
+    
+    /* Animation */
+    @keyframes fadeSlideUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.8rem;
+      }
+      
+      h2 {
+        font-size: 2rem;
+      }
+      
+      .focus-areas div {
+        width: 100%;
+      }
+      
+      .contact {
+        padding: 2rem 1rem;
+      }
+    }
+    /* Dark mode styles */
+    [data-theme="dark"] {
+      --primary-color: #4ea1ff;
+      --primary-dark: #1a4b7a;
+      --secondary-color: #cccccc;
+      --accent-color: #ffb3b3;
+      --bg-color: #181c24;
+      --bg-alt: #232837;
+      --divider-color: #333a4d;
+      --text-color: #f1f1f1;
+      --card-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+    [data-theme="dark"] body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+    }
+    [data-theme="dark"] .team-member,
+    [data-theme="dark"] .contact {
+      background: var(--bg-alt);
+    }
+    [data-theme="dark"] .focus-areas div {
+      background: var(--bg-alt);
+    }
+    [data-theme="dark"] footer {
+      background-color: var(--bg-alt);
+      color: var(--secondary-color);
+    }
+    [data-theme="dark"] .fs-input,
+    [data-theme="dark"] .fs-textarea {
+      background: #232837;
+      color: var(--text-color);
+      border: 1px solid var(--divider-color);
+    }
+    [data-theme="dark"] .fs-input:focus,
+    [data-theme="dark"] .fs-textarea:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(78,161,255,0.2);
+    }
+    [data-theme="dark"] #topBtn {
+      background: var(--primary-dark);
+      color: #fff;
+    }
+    [data-theme="dark"] #topBtn:hover {
+      background: var(--primary-color);
+    }
+    /* Toggle button style */
+    #darkModeToggle {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: var(--primary-color);
+      transition: color 0.3s;
+      z-index: 10;
+    }
+    #darkModeToggle:hover {
+      color: var(--primary-dark);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>instruo365</h1>
+  <p>Empowering the community through knowledge, every single day.</p>
+    <button id="darkModeToggle" aria-label="Toggle dark mode">
+    <i class="fas fa-moon"></i>
+</header>
+
+<main>
+  <img src="instruo.jpg" alt="Instruo365 Logo" width="40%" style="max-width: 350px; margin-top: 2rem;" />
+  <div class="meaning">
+    "to instruct, to teach, to fit out"
+  </div>
+
+  <div class="divider"></div>
+
+  <section>
+    <h2>Our Mission</h2>
+    <p>
+      At <strong>instruo365</strong>, we believe knowledge should be a right, not a privilege. 
+      By delivering top-tier training purely on a nonprofit basis, we open doors for communities to grow, innovate, and succeed. 
+      Our goal is simple: inspire, instruct, and empower — without barriers.
+    </p>
+  </section>
+
+  <div class="divider"></div>
+
+  <section>
+    <h2>Focus Areas</h2>
+    <p>Discover our out-of-the-box workshops and talks on sessionize or contact us for a customized session via LinkedIn, links below.</p>
+    <div class="focus-areas">
+      <div><strong>Microsoft Power Platform</strong>Transform business processes through low-code solutions and automation.</div>
+      <div><strong>Copilot Studio</strong>Build intelligent, conversational agents and enhance customer and employee experiences.</div>
+      <div><strong>Power Automate</strong>Automate workflows and integrate applications for seamless operations.</div>
+      <div><strong>Copilot</strong>Utilize AI-driven assistance across Microsoft 365 / Dynamics 365 to boost productivity.</div>
+      <div><strong>Azure Services</strong>Master cloud technologies and empower scalable, secure solutions.</div>
+      <div><strong>Design Thinking</strong>Empathize, define, ideate, prototype, and test to create innovative solutions.</div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="team">
+    <h2>Meet the Team</h2>
+    <p>
+      Instruo365 is a passion project and non-profit side hustle created by a dedicated team of professionals.
+      The team members devote their spare time and expertise to this initiative, aiming to make a 
+      positive impact without any financial gain. Their commitment to Instruo365 reflects their shared 
+      values and desire to contribute to the community.
+    </p>
+    <div class="team-members">
+      <!-- Holger Imbery -->
+      <div class="team-member">
+        <div style="text-align: center; margin-bottom: 20px;">
+          <a href="https://linkedin.com/in/holgerimbery" target="_blank">
+            <img src="holger-profile.jpg" alt="Holger Imbery">
+          </a>
+        </div>
+        <p style="font-size: 1.3rem; font-weight: 600; margin-bottom: 5px;">Holger Imbery</p>
+        <p style="color: var(--primary-color); margin-bottom: 10px;">MCT, MVP, Architect</p>
+        <p style="font-style: italic; margin-bottom: 15px;">"It's always a matter of perspective – and the snail says 'Wheeeeeee!'"</p>
+        <div>
+          <a style="display: inline-block; margin: 0 8px; font-size: 1.2rem;" href="https://www.linkedin.com/in/holgerimbery/" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a style="display: inline-block; margin: 0 8px; font-size: 1.2rem;" href="https://sessionize.com/holgerimbery/" target="_blank"><i class="fas fa-microphone"></i></a>
+          <a style="display: inline-block; margin: 0 8px; font-size: 1.2rem;" href="https://holgerimbery.blog" target="_blank"><i class="fas fa-blog"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <section class="contact">
+    <h2>Contact Us</h2>
+    <p>Please don't hesitate to reach out.</p>
+    <form
+      action="https://formspree.io/f/xvgagvev"
+      class="fs-form"
+      target="_top"
+      method="POST"
+    >
+      <div class="fs-field">
+      <label class="fs-label" for="name">Name</label>
+      <input class="fs-input" id="name" name="name" placeholder="Your name" />
+      </div>
+      <div class="fs-field">
+      <label class="fs-label" for="email">Email</label>
+      <input class="fs-input" id="email" name="email" placeholder="your.email@example.com" required />
+      </div>
+      <div class="fs-field">
+      <label class="fs-label" for="message">Message</label>
+      <textarea class="fs-textarea" id="message" name="message" placeholder="How can we help you?"></textarea>
+      <p class="fs-description" style="text-align: left; font-size: 0.9rem; margin-top: 0.5rem;">We usually respond within 1-2 business days.</p>
+      </div>
+      <div class="fs-button-group" style="text-align: right;">
+      <button class="fs-button" type="submit">Send Message</button>
+      </div>
+    </form>
+  </section>    
+</main>
+
+<footer>
+  &copy; 2025 instruo365 — Knowledge for Everyone
+</footer>
+
+<!-- Scroll to Top Button -->
+<button onclick="topFunction()" id="topBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+
+<script>
+  // Show the button after scrolling down
+  window.onscroll = function() {scrollFunction()};
+  function scrollFunction() {
+    const topBtn = document.getElementById("topBtn");
+    if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+      topBtn.style.display = "block";
+    } else {
+      topBtn.style.display = "none";
+    }
+  }
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+</script>
+<script>
+  // Dark mode toggle logic
+  const toggleBtn = document.getElementById('darkModeToggle');
+  const icon = toggleBtn.querySelector('i');
+  function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+  }
+  // Load saved theme
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme) setTheme(savedTheme);
+  toggleBtn.onclick = function() {
+    const current = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    const next = current === 'dark' ? 'light' : 'dark';
+    setTheme(next);
+    localStorage.setItem('theme', next);
+  };
+
+  // Show the button after scrolling down
+  window.onscroll = function() {scrollFunction()};
+  function scrollFunction() {
+    const topBtn = document.getElementById("topBtn");
+    if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+      topBtn.style.display = "block";
+    } else {
+      topBtn.style.display = "none";
+    }
+  }
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+</script>
+</body>
+</html>
