@@ -393,6 +393,12 @@
     }
     .session-card.jennifer { border-top-color: var(--accent-color); }
     .session-card.holger { border-top-color: var(--accent2-color); }
+    .session-speakers {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
     .session-speaker-tag {
       display: inline-flex;
       align-items: center;
@@ -404,6 +410,11 @@
     }
     .session-speaker-tag.jennifer { color: var(--accent-color); }
     .session-speaker-tag.holger { color: var(--accent2-color); }
+    .session-speaker-sep {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
     .session-card h4 {
       font-size: 1.05rem;
       font-weight: 700;
@@ -809,7 +820,11 @@
     <div class="sessions-grid">
 
       <div class="session-card jennifer">
-        <span class="session-speaker-tag jennifer"><i class="fas fa-user"></i> Jennifer Krause</span>
+        <div class="session-speakers">
+          <span class="session-speaker-tag jennifer"><i class="fas fa-user"></i> Jennifer Krause</span>
+          <span class="session-speaker-sep">&amp;</span>
+          <span class="session-speaker-tag holger"><i class="fas fa-user"></i> Holger Imbery</span>
+        </div>
         <h4>Building Autonomous Agents with Copilot Studio: A Practical Introduction</h4>
         <p>Design and integrate autonomous agents in Microsoft Copilot Studio — from core concepts to voice-based customer service scenarios. Includes live examples and Q&amp;A.</p>
         <div class="session-meta">
@@ -820,7 +835,11 @@
       </div>
 
       <div class="session-card jennifer">
-        <span class="session-speaker-tag jennifer"><i class="fas fa-user"></i> Jennifer Krause</span>
+        <div class="session-speakers">
+          <span class="session-speaker-tag jennifer"><i class="fas fa-user"></i> Jennifer Krause</span>
+          <span class="session-speaker-sep">&amp;</span>
+          <span class="session-speaker-tag holger"><i class="fas fa-user"></i> Holger Imbery</span>
+        </div>
         <h4>Rethinking Test Automation: Streamlining Agent Development with the Copilot Studio Kit</h4>
         <p>How the Copilot Studio Kit transforms test automation for custom agents — with live demos, workflow optimisation techniques, and real-world use cases.</p>
         <div class="session-meta">
@@ -831,7 +850,11 @@
       </div>
 
       <div class="session-card jennifer">
-        <span class="session-speaker-tag jennifer"><i class="fas fa-user"></i> Jennifer Krause</span>
+        <div class="session-speakers">
+          <span class="session-speaker-tag jennifer"><i class="fas fa-user"></i> Jennifer Krause</span>
+          <span class="session-speaker-sep">&amp;</span>
+          <span class="session-speaker-tag holger"><i class="fas fa-user"></i> Holger Imbery</span>
+        </div>
         <h4>Enhancing Customer Service with Autonomous Agents &amp; Dynamics 365</h4>
         <p>Autonomous agents integrated with Dynamics 365 Customer Service — automating ticket creation, self-service flows, and seamless human escalation for incoming email requests.</p>
         <div class="session-meta">
@@ -842,7 +865,11 @@
       </div>
 
       <div class="session-card holger">
-        <span class="session-speaker-tag holger"><i class="fas fa-user"></i> Holger Imbery</span>
+        <div class="session-speakers">
+          <span class="session-speaker-tag jennifer"><i class="fas fa-user"></i> Jennifer Krause</span>
+          <span class="session-speaker-sep">&amp;</span>
+          <span class="session-speaker-tag holger"><i class="fas fa-user"></i> Holger Imbery</span>
+        </div>
         <h4>Multi-Agent Architecture Patterns in Copilot Studio</h4>
         <p>Design patterns for nested (child) agents, connected agents, A2A collaboration, and MCP-enabled autonomous agents — with reference architectures and live demos.</p>
         <div class="session-meta">
@@ -853,7 +880,11 @@
       </div>
 
       <div class="session-card holger">
-        <span class="session-speaker-tag holger"><i class="fas fa-user"></i> Holger Imbery</span>
+        <div class="session-speakers">
+          <span class="session-speaker-tag jennifer"><i class="fas fa-user"></i> Jennifer Krause</span>
+          <span class="session-speaker-sep">&amp;</span>
+          <span class="session-speaker-tag holger"><i class="fas fa-user"></i> Holger Imbery</span>
+        </div>
         <h4>Agent in a Day Workshop</h4>
         <p>Full-day hands-on workshop: build, test, and deploy your first AI agent on the Microsoft Power Platform. Covers Copilot Studio, Power Automate, and Azure AI integration.</p>
         <div class="session-meta">
@@ -864,7 +895,11 @@
       </div>
 
       <div class="session-card holger">
-        <span class="session-speaker-tag holger"><i class="fas fa-user"></i> Holger Imbery</span>
+        <div class="session-speakers">
+          <span class="session-speaker-tag jennifer"><i class="fas fa-user"></i> Jennifer Krause</span>
+          <span class="session-speaker-sep">&amp;</span>
+          <span class="session-speaker-tag holger"><i class="fas fa-user"></i> Holger Imbery</span>
+        </div>
         <h4>Agentic AI on Azure: From Concept to Production</h4>
         <p>Practical guide to building autonomous, secure, and scalable AI systems with Azure AI Services, Azure Functions, and Copilot Studio — including governance and responsible AI practices.</p>
         <div class="session-meta">
