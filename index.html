@@ -184,13 +184,18 @@
       transform: translateY(-2px);
       box-shadow: 0 8px 24px rgba(0,102,204,0.35);
     }
+    .hero-wordmark {
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800;
+      letter-spacing: -2px;
+      background: linear-gradient(135deg, var(--primary-color), var(--accent2-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.4rem;
+    }
     .hero-logo {
       margin-top: 3rem;
-    }
-    .hero-logo img {
-      max-width: 500px;
-      width: 70%;
-      opacity: 0.9;
     }
     .hero-tagline {
       margin-top: 0.8rem;
@@ -707,7 +712,7 @@
   </div>
   <a href="#contact" class="hero-cta"><i class="fas fa-calendar-check"></i> Book a Session</a>
   <div class="hero-logo">
-    <img src="images/instruo.jpg" alt="instruo365">
+    <div class="hero-wordmark">instruo365</div>
     <div class="hero-tagline">"to instruct, to teach, to fit out" — nonprofit · community-first</div>
   </div>
 </div>
