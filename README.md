@@ -4,7 +4,7 @@ Personal speaker and architecture profile for Holger Imbery, Principal Architect
 
 The static site highlights current talks from [Sessionize](https://sessionize.com/holgerimbery/), previous talk topics and materials, areas of expertise, and contact details.
 
-The six earlier talk topics were refreshed against Microsoft documentation on 29 October 2026. Each updated description links to its primary guidance and distinguishes preview capabilities from production architecture. Original talk materials remain unchanged. The former Copilot Studio Kit is currently named [Copilot Agent Kit](https://github.com/microsoft/Power-CAT-Copilot-Studio-Kit); its maintained repository still documents testing capabilities.
+The six earlier talk topics were refreshed against Microsoft documentation on 29 October 2026. The updated descriptions distinguish preview capabilities from production architecture. Original talk materials remain unchanged. The former Copilot Studio Kit is currently named [Copilot Agent Kit](https://github.com/microsoft/Power-CAT-Copilot-Studio-Kit); its maintained repository still documents testing capabilities.
 
 ## Links
 
