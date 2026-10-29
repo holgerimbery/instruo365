@@ -409,30 +409,53 @@
     .archive-grid .session-type { color: var(--cp-text-muted); }
     .expertise-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 1rem;
     }
-    .expertise-card { padding: 1.5rem; }
+    #expertise .section-heading { display: block; }
+    .expertise-card {
+      display: grid;
+      grid-template-columns: 2.7rem minmax(0, 1fr);
+      align-content: start;
+      gap: 1rem;
+      padding: clamp(1.5rem, 3vw, 2rem);
+    }
     .expertise-card .icon {
       display: grid;
+      align-self: center;
       width: 2.7rem;
       height: 2.7rem;
       place-items: center;
-      margin-bottom: 1.1rem;
       color: var(--cp-accent);
       background: var(--cp-accent-soft);
       border-radius: 0.625rem;
       font-size: 1.1rem;
     }
-    .expertise-card h3 { margin: 0 0 0.5rem; font-size: 1.05rem; }
-    .expertise-card p { margin: 0; color: var(--cp-text-muted); font-size: 1rem; }
-    .expertise-card p + p { margin-top: 1rem; }
+    .expertise-card h3 { align-self: center; margin: 0; font-size: 1.15rem; }
+    .expertise-card p { grid-column: 1 / -1; margin: 0; color: var(--cp-text-muted); font-size: 1rem; }
     .expertise-copy { max-width: 75ch; }
     .expertise-copy h3 { margin: 0 0 1rem; font-size: 1.35rem; }
     .expertise-copy p { margin: 0; color: var(--cp-text-muted); font-size: 1.05rem; }
     .expertise-copy p + p { margin-top: 1rem; }
     .expertise-intro { margin-bottom: 2.5rem; }
-    .expertise-summary { margin-top: 2.5rem; }
+    .expertise-intro p:first-child { color: var(--cp-text); font-size: 1.25rem; }
+    .expertise-summary {
+      max-width: none;
+      margin-top: 2.5rem;
+      padding: clamp(1.5rem, 4vw, 2.5rem);
+      border: 1px solid var(--cp-border);
+      border-left: 4px solid var(--cp-accent);
+      border-radius: 0 16px 16px 0;
+      background: var(--cp-surface);
+    }
+    .expertise-summary p { max-width: 75ch; }
+    .expertise-summary .expertise-question {
+      color: var(--cp-text);
+      font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+      font-weight: 600;
+      line-height: 1.45;
+    }
+    .expertise-question strong { font-weight: inherit; }
 
     .contact-section {
       background: var(--cp-accent);
@@ -512,7 +535,6 @@
       .nav-links { flex-wrap: wrap; gap: 0.55rem 1rem; }
       .nav-links a { font-size: 0.82rem; }
       .archive-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .expertise-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
     @media (max-width: 680px) {
       .nav-wrap { display: block; }
@@ -700,10 +722,10 @@
     <section class="section section-alt" id="expertise">
       <div class="container">
         <div class="section-heading">
-          <h2>Topic Areas</h2>
+          <span class="section-kicker">Topic Areas</span>
+          <h2>Where I work and speak</h2>
         </div>
         <div class="expertise-copy expertise-intro">
-          <h3>Where I work and speak</h3>
           <p>My work sits at the intersection of <strong>enterprise AI, intelligent automation, low-code development, and agentic systems</strong>.</p>
           <p>I focus on how organizations can move from experimentation and individual copilots toward scalable AI and automation capabilities that work across applications, data, processes, and teams. From low-code solutions to autonomous agents and enterprise-wide orchestration, I connect strategic direction with the practical realities of architecture, implementation, governance, security, operations, and adoption.</p>
         </div>
@@ -751,7 +773,7 @@
         <div class="expertise-copy expertise-summary">
           <h3>The common thread</h3>
           <p>Across all six areas, the question I’m interested in is increasingly the same:</p>
-          <p><strong>How do we move from isolated AI demos and automations to a governed, scalable enterprise capability where people, copilots, agents, data, and business processes work together?</strong></p>
+          <p class="expertise-question"><strong>How do we move from isolated AI demos and automations to a governed, scalable enterprise capability where people, copilots, agents, data, and business processes work together?</strong></p>
           <p>That means looking beyond the technology itself and addressing the things that ultimately determine whether enterprise AI succeeds: <strong>architecture, governance, security, observability, FinOps, lifecycle management, adoption, and measurable business value.</strong></p>
         </div>
       </div>
