@@ -1,1053 +1,779 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Jennifer Krause & Holger Imbery — Microsoft speakers on AI Foundry, Power Platform, Copilot Studio and Microsoft 365 Copilot. Book them for your next event.">
+  <meta name="description" content="Holger Imbery is a Principal Architect, Microsoft MVP and speaker focused on enterprise AI, Copilot Studio, agentic systems and the Power Platform.">
+  <title>Holger Imbery | Architect &amp; Speaker</title>
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("scoutTheme");
+      const theme =
+        param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <title>instruo365</title>
   <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
-  <link rel="icon" type="image/png" sizes="48x48" href="/favicon/favicon-48x48.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
-  <link rel="icon" type="image/png" sizes="128x128" href="/favicon/favicon-128x128.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="/favicon/android-chrome-192x192.png">
-  <link rel="icon" type="image/png" sizes="512x512" href="/favicon/android-chrome-512x512.png">
   <link rel="manifest" href="/favicon/site.webmanifest">
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="9c261303-4b1c-464f-ab7f-0f9be106a299"></script>
   <style>
-    *, ::before, ::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      border: 0;
-    }
-
     :root {
-      --primary-color: #0066cc;
-      --primary-dark: #004e9e;
-      --primary-light: #e8f0fd;
-      --secondary-color: #555555;
-      --accent-color: #ff6b35;
-      --accent2-color: #7c3aed;
-      --bg-color: #ffffff;
-      --bg-alt: #f8f9fa;
-      --bg-hero: #f0f5ff;
-      --divider-color: #eeeeee;
-      --text-color: #1a1a2e;
-      --text-muted: #6b7280;
-      --card-shadow: 0 4px 20px rgba(0,0,0,0.08);
-      --card-shadow-hover: 0 12px 32px rgba(0,102,204,0.18);
-      --transition: all 0.3s ease;
-      --radius: 16px;
+      color-scheme: light;
+      --cp-bg: #f7f4ef;
+      --cp-bg-elevated: #fcfbf8;
+      --cp-surface: #ffffff;
+      --cp-surface-soft: #f5f5f5;
+      --cp-border: #dedede;
+      --cp-border-strong: #919191;
+      --cp-text: #242424;
+      --cp-text-muted: #5c5c5c;
+      --cp-text-soft: #6f6f6f;
+      --cp-accent: #b11f4b;
+      --cp-accent-hover: #9a1a41;
+      --cp-accent-soft: rgba(177, 31, 75, 0.08);
+      --cp-accent-fg: #ffffff;
+      --cp-success: #16a34a;
+      --cp-danger: #dc2626;
+      --cp-warning: #f59e0b;
+      --cp-link: #0078d4;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+      --cp-overlay: rgba(255, 255, 255, 0.8);
+      --cp-panel: rgba(255, 255, 255, 0.86);
+      --cp-panel-strong: rgba(255, 255, 255, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.55);
+      --cp-highlight: rgba(177, 31, 75, 0.12);
+    }
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --cp-bg: #3d3b3a;
+      --cp-bg-elevated: #343231;
+      --cp-surface: #292929;
+      --cp-surface-soft: #2e2e2e;
+      --cp-border: #474747;
+      --cp-border-strong: #5f5f5f;
+      --cp-text: #dedede;
+      --cp-text-muted: #919191;
+      --cp-text-soft: #b0b0b0;
+      --cp-accent: #b11f4b;
+      --cp-accent-hover: #9a1a41;
+      --cp-accent-soft: rgba(177, 31, 75, 0.14);
+      --cp-accent-fg: #ffffff;
+      --cp-success: #4ade80;
+      --cp-danger: #f87171;
+      --cp-warning: #fbbf24;
+      --cp-link: #4da6ff;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+      --cp-overlay: rgba(41, 41, 41, 0.88);
+      --cp-panel: rgba(41, 41, 41, 0.72);
+      --cp-panel-strong: rgba(41, 41, 41, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.04);
+      --cp-highlight: rgba(177, 31, 75, 0.12);
     }
 
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 5.5rem; }
     body {
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.7;
-      overflow-x: hidden;
-      scroll-behavior: smooth;
+      margin: 0;
+      background: var(--cp-bg);
+      color: var(--cp-text);
+      font-family: "Segoe UI", "Segoe UI Variable", "Segoe UI Web", -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+      line-height: 1.65;
     }
-
-    /* ── NAV ── */
-    nav {
+    a { color: var(--cp-link); }
+    button, input, textarea { font: inherit; }
+    img { display: block; max-width: 100%; }
+    .skip-link {
+      position: absolute;
+      left: 1rem;
+      top: -5rem;
+      z-index: 20;
+      padding: 0.75rem 1rem;
+      color: var(--cp-accent-fg);
+      background: var(--cp-accent);
+      border-radius: 0.625rem;
+    }
+    .skip-link:focus { top: 1rem; }
+    .site-header {
       position: sticky;
       top: 0;
-      z-index: 100;
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--divider-color);
-      padding: 0.8rem 2rem;
+      z-index: 10;
+      border-bottom: 1px solid var(--cp-border);
+      background: var(--cp-panel-strong);
+      backdrop-filter: blur(12px);
+    }
+    .nav-wrap {
+      width: min(1200px, calc(100% - 2.5rem));
+      min-height: 4.5rem;
+      margin: auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 1.5rem;
     }
-    .nav-brand {
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: var(--primary-color);
+    .brand {
+      color: var(--cp-text);
       text-decoration: none;
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      white-space: nowrap;
     }
+    .brand span { color: var(--cp-accent); }
     .nav-links {
       display: flex;
-      gap: 1.5rem;
-      list-style: none;
       align-items: center;
+      justify-content: flex-end;
+      gap: clamp(0.65rem, 1.8vw, 1.5rem);
+      margin: 0;
+      padding: 0;
+      list-style: none;
     }
     .nav-links a {
-      color: var(--text-color);
+      color: var(--cp-text-muted);
       text-decoration: none;
-      font-size: 0.95rem;
-      font-weight: 500;
-      transition: color 0.2s;
+      font-size: 0.88rem;
+      font-weight: 650;
+      white-space: nowrap;
     }
-    .nav-links a:hover { color: var(--primary-color); }
-    #darkModeToggle {
-      background: none;
-      border: none;
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--cp-accent); }
+    .theme-toggle {
+      display: inline-grid;
+      width: 2.5rem;
+      height: 2.5rem;
+      place-items: center;
+      color: var(--cp-text);
+      background: var(--cp-surface-soft);
+      border: 1px solid var(--cp-border);
+      border-radius: 0.625rem;
       cursor: pointer;
-      font-size: 1.2rem;
-      color: var(--primary-color);
-      transition: color 0.3s;
-      padding: 0.2rem 0.5rem;
     }
+    .theme-toggle:hover { border-color: var(--cp-accent); color: var(--cp-accent); }
 
-    /* ── HERO ── */
     .hero {
-      background: linear-gradient(135deg, #e8f0fd 0%, #f0e8ff 50%, #ffecd2 100%);
-      padding: 6rem 2rem 5rem;
-      text-align: center;
       position: relative;
       overflow: hidden;
-      opacity: 0;
-      animation: fadeSlideUp 0.9s ease-out forwards 0.1s;
+      background: var(--cp-accent);
+      color: var(--cp-accent-fg);
     }
-    .hero::before {
-      content: '';
+    .hero::after {
       position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 20% 50%, rgba(0,102,204,0.07) 0%, transparent 50%),
-                  radial-gradient(circle at 80% 20%, rgba(124,58,237,0.07) 0%, transparent 50%);
+      right: -9rem;
+      bottom: -19rem;
+      width: 42rem;
+      height: 42rem;
+      border: 1px solid var(--cp-accent-fg);
+      border-radius: 50%;
+      content: "";
+      opacity: 0.16;
       pointer-events: none;
     }
-    .hero-eyebrow {
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(240px, 0.8fr);
+      align-items: center;
+      gap: 4rem;
+      width: min(1200px, calc(100% - 2.5rem));
+      min-height: 38rem;
+      margin: auto;
+      padding: 5.5rem 0;
+    }
+    .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      background: var(--primary-light);
-      color: var(--primary-color);
-      border-radius: 50px;
-      padding: 0.35rem 1rem;
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-    }
-    .hero h1 {
-      font-size: clamp(2.4rem, 5vw, 4rem);
+      gap: 0.55rem;
+      margin-bottom: 1.3rem;
+      font-size: 0.78rem;
       font-weight: 800;
-      letter-spacing: -1.5px;
-      line-height: 1.1;
-      margin-bottom: 1.2rem;
-      background: linear-gradient(135deg, var(--primary-color), var(--accent2-color));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
     }
-    .hero-subtitle {
-      font-size: 1.25rem;
-      color: var(--secondary-color);
-      max-width: 620px;
-      margin: 0 auto 2.5rem;
+    .eyebrow i { font-size: 0.7rem; }
+    .hero h1 {
+      max-width: 760px;
+      margin: 0;
+      font-size: clamp(3.4rem, 8.5vw, 7.5rem);
+      font-weight: 600;
+      letter-spacing: -0.04em;
+      line-height: 0.95;
     }
-    .hero-badges {
+    .hero-intro {
+      max-width: 650px;
+      margin: 1.7rem 0 0;
+      font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+      line-height: 1.6;
+    }
+    .brand-note {
+      margin: 0.8rem 0 0;
+      color: var(--cp-accent-fg);
+      font-size: 0.82rem;
+      letter-spacing: 0.015em;
+      opacity: 0.86;
+    }
+    .brand-note em { font-weight: 750; }
+    .hero-actions {
       display: flex;
       flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 2rem;
+    }
+    .button {
+      display: inline-flex;
+      min-height: 3rem;
+      align-items: center;
       justify-content: center;
       gap: 0.6rem;
+      padding: 0.75rem 1.1rem;
+      color: var(--cp-text);
+      background: var(--cp-surface);
+      border: 1px solid var(--cp-surface);
+      border-radius: 0.625rem;
+      text-decoration: none;
+      font-weight: 750;
+      transition: transform 160ms ease, background 160ms ease;
+    }
+    .button:hover { transform: translateY(-2px); background: var(--cp-bg-elevated); }
+    .button-outline {
+      color: var(--cp-accent-fg);
+      background: var(--cp-accent);
+      border-color: var(--cp-accent-fg);
+    }
+    .button-outline:hover { color: var(--cp-text); background: var(--cp-surface); }
+    .hero-portrait {
+      position: relative;
+      justify-self: center;
+      width: min(100%, 340px);
+      aspect-ratio: 0.86;
+      padding: 0.85rem;
+      border: 1px solid var(--cp-accent-fg);
+      border-radius: 16px;
+      transform: rotate(2deg);
+    }
+    .hero-portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+      background: var(--cp-surface);
+    }
+    .portrait-label {
+      position: absolute;
+      right: -1.4rem;
+      bottom: 1.2rem;
+      padding: 0.75rem 1rem;
+      color: var(--cp-text);
+      background: var(--cp-surface);
+      border-radius: 0.625rem;
+      box-shadow: var(--cp-shadow);
+      font-weight: 800;
+      transform: rotate(-2deg);
+    }
+    .hero-topics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 2rem;
+    }
+    .hero-topics span {
+      padding: 0.35rem 0.7rem;
+      border: 1px solid var(--cp-accent-fg);
+      border-radius: 0.625rem;
+      font-size: 0.78rem;
+      font-weight: 700;
+    }
+
+    .section {
+      padding: clamp(4rem, 8vw, 7rem) 0;
+    }
+    .section-alt { background: var(--cp-bg-elevated); }
+    .container { width: min(1100px, calc(100% - 2.5rem)); margin: auto; }
+    .section-heading {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(260px, 0.7fr);
+      align-items: end;
+      gap: 2rem;
       margin-bottom: 2.5rem;
     }
-    .badge {
-      background: white;
-      border: 1px solid var(--divider-color);
-      border-radius: 50px;
-      padding: 0.4rem 1rem;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--primary-dark);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-    .badge i { color: var(--primary-color); }
-    .hero-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--primary-color);
-      color: white;
-      padding: 0.85rem 2rem;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 1rem;
-      text-decoration: none;
-      transition: var(--transition);
-      box-shadow: 0 4px 16px rgba(0,102,204,0.3);
-    }
-    .hero-cta:hover {
-      background: var(--primary-dark);
-      color: white;
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(0,102,204,0.35);
-    }
-    .hero-wordmark {
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      font-weight: 800;
-      letter-spacing: -2px;
-      background: linear-gradient(135deg, var(--primary-color), var(--accent2-color));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      margin-bottom: 0.4rem;
-    }
-    .hero-logo {
-      margin-top: 3rem;
-    }
-    .hero-tagline {
-      margin-top: 0.8rem;
-      font-style: italic;
-      font-size: 1rem;
-      color: var(--secondary-color);
-    }
-
-    /* ── SECTION COMMON ── */
-    section {
-      padding: 5rem 2rem;
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeSlideUp 0.8s ease-out forwards;
-    }
-    section:nth-of-type(1) { animation-delay: 0.3s; }
-    section:nth-of-type(2) { animation-delay: 0.45s; }
-    section:nth-of-type(3) { animation-delay: 0.6s; }
-    section:nth-of-type(4) { animation-delay: 0.75s; }
-    section:nth-of-type(5) { animation-delay: 0.9s; }
-
-    .section-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .section-label {
-      display: inline-block;
-      color: var(--primary-color);
-      font-weight: 700;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 0.8rem;
-    }
-    .section-title {
-      font-size: clamp(1.8rem, 3vw, 2.5rem);
-      font-weight: 800;
-      color: var(--text-color);
-      margin-bottom: 1rem;
-      letter-spacing: -0.5px;
-    }
-    .section-desc {
-      font-size: 1.1rem;
-      color: var(--text-muted);
-      max-width: 680px;
-    }
-    .section-header {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-    .section-header .section-desc {
-      margin: 0 auto;
-    }
-
-    .divider {
-      width: 50%;
-      height: 1px;
-      background: linear-gradient(to right, transparent, var(--divider-color), transparent);
-      margin: 0 auto;
-    }
-
-    /* ── SPEAKER PROFILES ── */
-    .alt-bg { background: var(--bg-alt); }
-
-    .speakers-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
-      gap: 2.5rem;
-      margin-top: 3rem;
-    }
-    .speaker-card {
-      background: var(--bg-color);
-      border-radius: var(--radius);
-      box-shadow: var(--card-shadow);
-      overflow: hidden;
-      transition: var(--transition);
-    }
-    .speaker-card:hover {
-      box-shadow: var(--card-shadow-hover);
-      transform: translateY(-4px);
-    }
-    .speaker-card-header {
-      background: linear-gradient(135deg, var(--primary-light), #f0e8ff);
-      padding: 2.5rem 2rem 1.5rem;
-      display: flex;
-      align-items: flex-start;
-      gap: 1.5rem;
-    }
-    .speaker-avatar {
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid white;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-      flex-shrink: 0;
-    }
-    .speaker-meta h3 {
-      font-size: 1.6rem;
-      font-weight: 800;
-      color: var(--text-color);
-      margin-bottom: 0.3rem;
-    }
-    .speaker-role {
-      color: var(--primary-color);
-      font-weight: 600;
-      font-size: 0.95rem;
-      margin-bottom: 0.4rem;
-    }
-    .speaker-company {
-      color: var(--text-muted);
-      font-size: 0.88rem;
+    .section-kicker {
+      display: block;
       margin-bottom: 0.6rem;
-    }
-    .speaker-location {
-      display: flex;
-      align-items: center;
-      gap: 0.3rem;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-    .speaker-card-body {
-      padding: 1.8rem 2rem;
-    }
-    .speaker-bio {
-      font-size: 1rem;
-      color: var(--secondary-color);
-      line-height: 1.75;
-      margin-bottom: 1.5rem;
-    }
-    .speaker-quote {
-      border-left: 3px solid var(--primary-color);
-      padding-left: 1rem;
-      font-style: italic;
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      margin-bottom: 1.5rem;
-    }
-    .expertise-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1.8rem;
-    }
-    .tag {
-      background: var(--primary-light);
-      color: var(--primary-dark);
-      border-radius: 50px;
-      padding: 0.3rem 0.8rem;
+      color: var(--cp-accent);
       font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+    .section-heading h2 {
+      margin: 0;
+      font-size: clamp(2.1rem, 4vw, 3.5rem);
       font-weight: 600;
+      letter-spacing: -0.035em;
+      line-height: 1.05;
     }
-    .speaker-links {
-      display: flex;
-      gap: 0.7rem;
-      flex-wrap: wrap;
+    .section-heading p {
+      margin: 0;
+      color: var(--cp-text-muted);
+      font-size: 1.05rem;
     }
-    .speaker-link-btn {
+    .profile-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(260px, 0.7fr);
+      gap: 1.25rem;
+    }
+    .profile-copy, .profile-facts, .session-card, .expertise-card, .contact-card {
+      background: var(--cp-surface);
+      border: 1px solid var(--cp-border);
+      border-radius: 16px;
+    }
+    .profile-copy { padding: clamp(1.5rem, 4vw, 2.5rem); }
+    .profile-copy p { margin: 0; color: var(--cp-text-muted); font-size: 1.04rem; }
+    .profile-copy p + p { margin-top: 1rem; }
+    .profile-facts { padding: 1.5rem; }
+    .fact { padding: 1rem 0; border-bottom: 1px solid var(--cp-border); }
+    .fact:first-child { padding-top: 0; }
+    .fact:last-child { padding-bottom: 0; border-bottom: 0; }
+    .fact-label {
+      display: block;
+      margin-bottom: 0.2rem;
+      color: var(--cp-text-soft);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .fact strong { font-size: 0.98rem; }
+    .profile-links { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.25rem; }
+    .text-link {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      font-size: 0.85rem;
-      font-weight: 600;
+      gap: 0.5rem;
+      color: var(--cp-text);
       text-decoration: none;
-      transition: var(--transition);
-      background: var(--bg-alt);
-      color: var(--text-color);
-      border: 1px solid var(--divider-color);
+      font-size: 0.9rem;
+      font-weight: 750;
     }
-    .speaker-link-btn:hover {
-      background: var(--primary-color);
-      color: white;
-      border-color: var(--primary-color);
-    }
-    .speaker-link-btn i { font-size: 1rem; }
+    .text-link i { color: var(--cp-accent); }
+    .text-link:hover { color: var(--cp-accent); }
 
-    /* ── SESSIONS / TALKS ── */
     .sessions-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1.5rem;
-      margin-top: 3rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
     }
     .session-card {
-      background: var(--bg-color);
-      border-radius: 12px;
-      padding: 1.8rem;
-      box-shadow: var(--card-shadow);
-      border-top: 4px solid transparent;
-      transition: var(--transition);
       display: flex;
       flex-direction: column;
-      gap: 0.8rem;
+      min-height: 100%;
+      padding: 1.5rem;
+      border-top: 4px solid var(--cp-accent);
+      transition: transform 160ms ease, box-shadow 160ms ease;
     }
-    .session-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--card-shadow-hover);
+    .session-card:hover { transform: translateY(-3px); box-shadow: var(--cp-shadow); }
+    .session-type {
+      margin-bottom: 0.85rem;
+      color: var(--cp-accent);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
-    .session-card.jennifer { border-top-color: var(--accent-color); }
-    .session-card.holger { border-top-color: var(--accent2-color); }
-    .session-speakers {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      flex-wrap: wrap;
+    .session-card h3 {
+      margin: 0 0 0.75rem;
+      font-size: 1.25rem;
+      letter-spacing: -0.025em;
+      line-height: 1.3;
     }
-    .session-speaker-tag {
+    .session-card p { margin: 0 0 1.25rem; color: var(--cp-text-muted); font-size: 0.94rem; }
+    .session-card .archive-speakers {
+      margin: 0;
+      color: var(--cp-text-soft);
+      font-size: 0.82rem;
+    }
+    .archive-speakers a {
       display: inline-flex;
       align-items: center;
-      gap: 0.35rem;
-      font-size: 0.75rem;
+      gap: 0.3rem;
+      color: var(--cp-link);
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
+      text-decoration: none;
     }
-    .session-speaker-tag.jennifer { color: var(--accent-color); }
-    .session-speaker-tag.holger { color: var(--accent2-color); }
-    .session-speaker-sep {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      font-weight: 400;
-    }
-    .session-card h4 {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--text-color);
-      line-height: 1.4;
-    }
-    .session-card p {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      margin: 0;
-    }
-    .session-meta {
-      display: flex;
-      gap: 0.8rem;
-      flex-wrap: wrap;
-      margin-top: auto;
-    }
-    .session-pill {
-      font-size: 0.75rem;
-      font-weight: 600;
-      padding: 0.2rem 0.6rem;
-      border-radius: 50px;
-      background: var(--bg-alt);
-      color: var(--text-muted);
-    }
-
-    /* ── EXPERTISE MATRIX ── */
+    .archive-speakers a:hover { text-decoration: underline; }
+    .session-card .text-link { margin-top: auto; }
+    .section-footnote { margin: 1.5rem 0 0; color: var(--cp-text-muted); font-size: 0.9rem; }
+    .archive-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+    .archive-grid .session-card { border-top-color: var(--cp-border-strong); }
+    .archive-grid .session-type { color: var(--cp-text-muted); }
     .expertise-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin-top: 3rem;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
     }
-    .expertise-card {
-      background: var(--bg-color);
-      border-radius: 12px;
-      padding: 2rem;
-      box-shadow: var(--card-shadow);
-      text-align: center;
-      transition: var(--transition);
-      border-bottom: 3px solid transparent;
-    }
-    .expertise-card:hover {
-      border-bottom-color: var(--primary-color);
-      transform: translateY(-5px);
-    }
+    .expertise-card { padding: 1.5rem; }
     .expertise-card .icon {
-      font-size: 2.2rem;
-      margin-bottom: 1rem;
-      display: block;
-    }
-    .expertise-card strong {
-      display: block;
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--primary-color);
-      margin-bottom: 0.5rem;
-    }
-    .expertise-card p {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      margin: 0;
-    }
-
-    /* ── CONTACT ── */
-    .contact-section {
-      background: var(--bg-alt);
-    }
-    .contact-wrap {
       display: grid;
-      grid-template-columns: 1fr 1.5fr;
-      gap: 3rem;
+      width: 2.7rem;
+      height: 2.7rem;
+      place-items: center;
+      margin-bottom: 1.1rem;
+      color: var(--cp-accent);
+      background: var(--cp-accent-soft);
+      border-radius: 0.625rem;
+      font-size: 1.1rem;
+    }
+    .expertise-card h3 { margin: 0 0 0.5rem; font-size: 1.05rem; }
+    .expertise-card p { margin: 0; color: var(--cp-text-muted); font-size: 0.9rem; }
+
+    .contact-section {
+      background: var(--cp-accent);
+      color: var(--cp-accent-fg);
+    }
+    .contact-section .section-kicker { color: var(--cp-accent-fg); }
+    .contact-section .section-heading p { color: var(--cp-accent-fg); }
+    .contact-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 0.8fr) minmax(300px, 1fr);
+      gap: 2rem;
       align-items: start;
-      max-width: 900px;
-      margin: 3rem auto 0;
     }
-    .contact-info h3 {
-      font-size: 1.3rem;
-      font-weight: 700;
-      margin-bottom: 0.8rem;
-    }
-    .contact-info p {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      margin: 0;
-    }
-    .contact-bullets {
-      list-style: none;
-      margin-top: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-    }
-    .contact-bullets li {
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
-    .contact-bullets i {
-      color: var(--primary-color);
-      width: 18px;
-    }
-    .fs-form { display: grid; row-gap: 1.2rem; text-align: left; }
-    .fs-label {
-      color: var(--text-color);
-      display: block;
-      font-weight: 500;
-      font-size: 0.9rem;
-      margin-bottom: 0.4rem;
-    }
-    .fs-input, .fs-textarea {
-      border-radius: 8px;
-      border: 1px solid var(--divider-color);
-      padding: 11px 14px;
+    .contact-copy h3 { margin: 0 0 0.7rem; font-size: 1.4rem; }
+    .contact-copy p { margin: 0 0 1rem; }
+    .contact-list { margin: 1.5rem 0 0; padding: 0; list-style: none; }
+    .contact-list li { display: flex; gap: 0.65rem; margin: 0.7rem 0; }
+    .contact-list i { margin-top: 0.35rem; }
+    .contact-card { padding: clamp(1.25rem, 3vw, 2rem); color: var(--cp-text); }
+    .contact-form { display: grid; gap: 1rem; }
+    .field label { display: block; margin-bottom: 0.35rem; font-size: 0.88rem; font-weight: 700; }
+    .field input, .field textarea {
       width: 100%;
-      font-size: 0.95rem;
-      background: white;
-      transition: var(--transition);
-      font-family: inherit;
+      padding: 0.75rem 0.85rem;
+      color: var(--cp-text);
+      background: var(--cp-bg-elevated);
+      border: 1px solid var(--cp-border);
+      border-radius: 0.625rem;
     }
-    .fs-input:focus, .fs-textarea:focus {
-      border-color: var(--primary-color);
-      box-shadow: 0 0 0 3px rgba(0,102,204,0.15);
-      outline: none;
-    }
-    .fs-textarea { min-height: 140px; resize: vertical; }
-    .fs-button {
-      background: var(--primary-color);
-      color: white;
-      border-radius: 8px;
-      padding: 11px 22px;
-      font-weight: 600;
-      font-size: 0.95rem;
+    .field input:focus, .field textarea:focus { outline: 2px solid var(--cp-accent); outline-offset: 1px; }
+    .field textarea { min-height: 8rem; resize: vertical; }
+    .form-submit {
+      justify-self: start;
+      padding: 0.75rem 1rem;
+      color: var(--cp-accent-fg);
+      background: var(--cp-accent);
+      border: 1px solid var(--cp-accent);
+      border-radius: 0.625rem;
       cursor: pointer;
-      transition: var(--transition);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
+      font-weight: 750;
     }
-    .fs-button:hover {
-      background: var(--primary-dark);
-      transform: translateY(-2px);
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      background: var(--text-color);
-      color: #adb5bd;
-      text-align: center;
-      padding: 3rem 2rem;
-      font-size: 0.9rem;
-      opacity: 0;
-      animation: fadeSlideUp 0.8s ease-out forwards 1.2s;
-    }
-    footer strong { color: white; }
-    .footer-links {
+    .form-submit:hover { background: var(--cp-accent-hover); }
+    .site-footer { padding: 2.5rem 0; background: var(--cp-bg-elevated); }
+    .footer-inner {
       display: flex;
-      justify-content: center;
+      align-items: center;
+      justify-content: space-between;
       gap: 1.5rem;
-      margin-top: 1rem;
-      flex-wrap: wrap;
+      width: min(1100px, calc(100% - 2.5rem));
+      margin: auto;
     }
-    .footer-links a {
-      color: #adb5bd;
-      text-decoration: none;
-      font-size: 0.85rem;
-      transition: color 0.2s;
-    }
-    .footer-links a:hover { color: white; }
-
-    /* ── SCROLL TO TOP ── */
-    #topBtn {
-      display: none;
+    .footer-copy { margin: 0; color: var(--cp-text-muted); font-size: 0.86rem; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .footer-links a { color: var(--cp-text-muted); text-decoration: none; font-size: 0.86rem; font-weight: 650; }
+    .footer-links a:hover { color: var(--cp-accent); }
+    .back-to-top {
       position: fixed;
-      bottom: 30px;
-      right: 30px;
-      z-index: 99;
-      font-size: 16px;
-      background: var(--primary-color);
-      color: #fff;
-      border: none;
-      outline: none;
-      padding: 12px 14px;
-      border-radius: 50%;
-      cursor: pointer;
-      transition: var(--transition);
-      box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+      right: 1.25rem;
+      bottom: 1.25rem;
+      z-index: 5;
+      display: grid;
+      width: 2.8rem;
+      height: 2.8rem;
+      place-items: center;
+      color: var(--cp-accent-fg);
+      background: var(--cp-accent);
+      border: 1px solid var(--cp-accent);
+      border-radius: 0.625rem;
+      box-shadow: var(--cp-shadow);
+      text-decoration: none;
     }
-    #topBtn:hover {
-      background: var(--primary-dark);
-      transform: translateY(-3px);
-    }
+    :focus-visible { outline: 2px solid var(--cp-link); outline-offset: 3px; }
 
-    /* ── ANIMATION ── */
-    @keyframes fadeSlideUp {
-      to { opacity: 1; transform: translateY(0); }
+    @media (max-width: 900px) {
+      .hero-inner { gap: 2rem; }
+      .nav-wrap { align-items: flex-start; padding: 0.75rem 0; }
+      .nav-links { flex-wrap: wrap; gap: 0.55rem 1rem; }
+      .nav-links a { font-size: 0.82rem; }
+      .archive-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
-
-    /* ── DARK MODE ── */
-    [data-theme="dark"] {
-      --primary-color: #4ea1ff;
-      --primary-dark: #1a4b7a;
-      --primary-light: #1a2a4a;
-      --secondary-color: #cccccc;
-      --accent-color: #ff8c5a;
-      --accent2-color: #a78bfa;
-      --bg-color: #181c24;
-      --bg-alt: #232837;
-      --bg-hero: #1a1f30;
-      --divider-color: #333a4d;
-      --text-color: #f1f1f1;
-      --text-muted: #9ca3af;
-      --card-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    @media (max-width: 680px) {
+      .nav-wrap { display: block; }
+      .brand { display: inline-block; margin-bottom: 0.7rem; }
+      .nav-links { justify-content: flex-start; }
+      .hero-inner { grid-template-columns: 1fr; min-height: auto; padding: 4rem 0; }
+      .hero-copy { order: 1; }
+      .hero-portrait { order: 0; width: min(68%, 250px); justify-self: start; }
+      .portrait-label { right: -1rem; }
+      .hero h1 { font-size: clamp(3.3rem, 15vw, 5rem); }
+      .section-heading, .profile-grid, .contact-layout { grid-template-columns: 1fr; }
+      .sessions-grid, .archive-grid, .expertise-grid { grid-template-columns: 1fr; }
+      .footer-inner { align-items: flex-start; flex-direction: column; }
     }
-    [data-theme="dark"] nav {
-      background: rgba(24,28,36,0.95);
-      border-color: var(--divider-color);
-    }
-    [data-theme="dark"] .hero {
-      background: linear-gradient(135deg, #1a2a4a 0%, #1f1a3a 50%, #2a1f12 100%);
-    }
-    [data-theme="dark"] .badge,
-    [data-theme="dark"] .speaker-card,
-    [data-theme="dark"] .session-card,
-    [data-theme="dark"] .expertise-card {
-      background: var(--bg-alt);
-    }
-    [data-theme="dark"] .speaker-card-header {
-      background: linear-gradient(135deg, #1a2a4a, #1f1a3a);
-    }
-    [data-theme="dark"] .fs-input,
-    [data-theme="dark"] .fs-textarea {
-      background: #2a2f3e;
-      color: var(--text-color);
-      border-color: var(--divider-color);
-    }
-    [data-theme="dark"] footer {
-      background: #0f1117;
-    }
-    [data-theme="dark"] .speaker-link-btn {
-      background: var(--bg-color);
-      color: var(--text-color);
-      border-color: var(--divider-color);
-    }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
-      .speakers-grid { grid-template-columns: 1fr; }
-      .speaker-card-header { flex-direction: column; align-items: center; text-align: center; }
-      .speaker-location { justify-content: center; }
-      .contact-wrap { grid-template-columns: 1fr; }
-      .nav-links li:not(:last-child) { display: none; }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
     }
   </style>
-  <!-- begin umami -->
-  <script defer src="https://cloud.umami.is/script.js" data-website-id="9c261303-4b1c-464f-ab7f-0f9be106a299"></script>
-  <!-- end umami -->
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="top">
+    <nav class="nav-wrap" aria-label="Main navigation">
+      <a class="brand" href="#top">HOLGER <span>IMBERY</span></a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#talks">Talks</a></li>
+        <li><a href="#archive">Archive</a></li>
+        <li><a href="#expertise">Expertise</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="https://holgerimbery.blog" target="_blank" rel="noopener noreferrer">Blog</a></li>
+        <li><a href="https://github.com/instruo365/talks/tree/main" target="_blank" rel="noopener noreferrer">Talk content</a></li>
+        <li><a href="https://www.mate365.app/" target="_blank" rel="noopener noreferrer">Tenant Manager</a></li>
+        <li><a href="https://labs.instruo365.de" target="_blank" rel="noopener noreferrer">Labs</a></li>
+        <li>
+          <button class="theme-toggle" id="darkModeToggle" type="button" aria-label="Switch to dark theme" aria-pressed="false">
+            <i class="fas fa-moon" aria-hidden="true"></i>
+          </button>
+        </li>
+      </ul>
+    </nav>
+  </header>
 
-<!-- ══ NAV ══ -->
-<nav>
-  <a class="nav-brand" href="#">instruo365</a>
-  <ul class="nav-links">
-    <li><a href="#speakers">Speakers</a></li>
-    <li><a href="#talks">Talks</a></li>
-    <li><a href="https://github.com/instruo365/talks/tree/main" target="_blank" rel="noopener noreferrer">Content from Talks</a></li>
-    <li><a href="#expertise">Expertise</a></li>
-    <li><a href="#contact">Book Us</a></li>
-    <li><a href="https://www.mate365.app/" target="_blank" rel="noopener noreferrer">Tenant Manager</a></li>
-    <li><a href="https://labs.instruo365.de" target="_blank" rel="noopener noreferrer">Labs</a></li>
-    <li>
-      <button id="darkModeToggle" aria-label="Toggle dark mode">
-        <i class="fas fa-moon"></i>
-      </button>
-    </li>
-  </ul>
-</nav>
-
-<!-- ══ HERO ══ -->
-<div class="hero">
-  <h1>We talk about<br>what we build.</h1>
-  <p class="hero-subtitle">Jennifer Krause &amp; Holger Imbery — two Microsoft practitioners who turn complex AI and automation topics into clear, actionable sessions your audience will remember.</p>
-  <div class="hero-badges">
-    <span class="badge"><i class="fas fa-robot"></i> AI Foundry</span>
-    <span class="badge"><i class="fas fa-layer-group"></i> Power Platform</span>
-    <span class="badge"><i class="fas fa-comments"></i> Copilot Studio</span>
-    <span class="badge"><i class="fas fa-cloud"></i> Microsoft 365 Copilot</span>
-    <span class="badge"><i class="fas fa-bolt"></i> Power Automate</span>
-    <span class="badge"><i class="fas fa-server"></i> Azure AI Services</span>
-  </div>
-  <a href="#contact" class="hero-cta"><i class="fas fa-calendar-check"></i> Book a Session</a>
-
-</div>
-
-<!-- ══ SPEAKERS ══ -->
-<section id="speakers">
-  <div class="section-inner">
-    <div class="section-header">
-      <span class="section-label">The Speakers</span>
-      <h2 class="section-title">Meet the Experts</h2>
-      <p class="section-desc">Practitioners who build every day — and share what they learn on stage.</p>
-    </div>
-
-    <div class="speakers-grid">
-
-      <!-- Jennifer Krause -->
-      <div class="speaker-card">
-        <div class="speaker-card-header">
-          <a href="https://linkedin.com/in/krause-jennifer" target="_blank">
-            <img src="images/jennifer-profile.jpg" alt="Jennifer Krause" class="speaker-avatar">
-          </a>
-          <div class="speaker-meta">
-            <h3>Jennifer Krause</h3>
-            <div class="speaker-role">Technical Consultant · AI &amp; Automation</div>
-            <div class="speaker-company"><i class="fas fa-building" style="font-size:0.8rem; margin-right:4px;"></i> NTT Germany AG &amp; Co. KG (NTT DATA Group)</div>
-            <div class="speaker-location"><i class="fas fa-map-marker-alt"></i> Frankfurt am Main, Germany</div>
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <span class="eyebrow"><i class="fas fa-circle" aria-hidden="true"></i> Architect · Microsoft MVP · Speaker</span>
+          <h1 id="hero-title">Holger<br>Imbery.</h1>
+          <p class="hero-intro">I build enterprise AI as an architect. Through instruo365, I turn that work into practical talks, tools, and labs, sharing what works, what doesn't, and how to take ideas into production.</p>
+          <p class="brand-note"><em>instruo</em>, Latin for “to teach, inform, instruct.”</p>
+          <div class="hero-actions">
+            <a class="button" href="#talks"><i class="fas fa-microphone" aria-hidden="true"></i> Explore my talks</a>
+            <a class="button button-outline" href="#contact"><i class="fas fa-arrow-right" aria-hidden="true"></i> Invite me to speak</a>
+            <a class="button button-outline" href="https://holgerimbery.blog" target="_blank" rel="noopener noreferrer"><i class="fas fa-pen-nib" aria-hidden="true"></i> Read my blog</a>
+          </div>
+          <div class="hero-topics" aria-label="Areas of focus">
+            <span>Agentic AI</span><span>Copilot Studio</span><span>Microsoft Foundry</span><span>Enterprise architecture</span><span>Azure</span>
           </div>
         </div>
-        <div class="speaker-card-body">
-          <p class="speaker-bio">
-            Jennifer empowers organisations to transform business processes through AI and automation, leveraging the full potential of Microsoft's Power Platform. Using Copilot Studio and the broader Copilot ecosystem, she creates tailored solutions that meet users where they are — enhancing customer engagement, supporting internal teams, and driving innovation at scale. Her mission is to help organisations turn AI into a strategic asset that delivers measurable value and fosters long-term growth.
-          </p>
-          <div class="expertise-tags">
-            <span class="tag">Copilot Studio</span>
-            <span class="tag">Autonomous Agents</span>
-            <span class="tag">Power Platform</span>
-            <span class="tag">Microsoft 365 Copilot</span>
-            <span class="tag">Customer Service AI</span>
-            <span class="tag">Test Automation</span>
+        <div class="hero-portrait">
+          <img src="images/holger-profile.jpg" alt="Holger Imbery">
+          <span class="portrait-label">Berlin, Germany</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-heading">
+          <div><span class="section-kicker">About</span><h2>Architecture that works beyond the demo.</h2></div>
+          <p>Principal Architect at NTT DATA, Microsoft MVP and MCT. I help teams turn emerging Microsoft technologies into secure, scalable solutions.</p>
+        </div>
+        <div class="profile-grid">
+          <div class="profile-copy">
+            <p>Holger is a Principal Architect and Microsoft MVP specializing in agentic AI, autonomous systems, and the Microsoft Power Platform, with a deep focus on Copilot Studio and Azure AI Services. He designs and implements agentic AI systems that support autonomous decision-making and intelligent process automation in enterprise environments, building secure, scalable, and well-governed solutions.</p>
+            <p>His work spans enterprise AI, Microsoft Copilot Studio, Power Platform, Dynamics 365, and intelligent automation. He advises organizations on the design and implementation of AI-powered business solutions that improve operational efficiency, enhance customer engagement, and deliver measurable business outcomes.</p>
+            <div class="profile-links">
+              <a class="text-link" href="https://www.linkedin.com/in/holgerimbery/" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn</a>
+              <a class="text-link" href="https://holgerimbery.blog" target="_blank" rel="noopener noreferrer"><i class="fas fa-pen-nib" aria-hidden="true"></i> Blog</a>
+              <a class="text-link" href="https://sessionize.com/holgerimbery/" target="_blank" rel="noopener noreferrer"><i class="fas fa-microphone" aria-hidden="true"></i> Sessionize</a>
+            </div>
           </div>
-          <div class="speaker-links">
-            <a href="https://www.linkedin.com/in/krause-jennifer" target="_blank" class="speaker-link-btn">
-              <i class="fab fa-linkedin"></i> LinkedIn
-            </a>
-            <a href="https://sessionize.com/jkrause/" target="_blank" class="speaker-link-btn">
-              <i class="fas fa-microphone"></i> Sessionize
-            </a>
+          <aside class="profile-facts" aria-label="Professional details">
+            <div class="fact"><span class="fact-label">Role</span><strong>Principal Architect</strong></div>
+            <div class="fact"><span class="fact-label">Company</span><strong>NTT DATA</strong></div>
+            <div class="fact"><span class="fact-label">Recognition</span><strong>Microsoft MVP · MCT</strong></div>
+            <div class="fact"><span class="fact-label">Based in</span><strong>Berlin, Germany</strong></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="talks">
+      <div class="container">
+        <div class="section-heading">
+          <div><span class="section-kicker">Sessionize · Current sessions</span><h2>Talks built from real architecture work.</h2></div>
+          <p>Sessions on customer-facing AI, agent economics, and the enterprise patterns needed to build, govern, and operate agentic solutions.</p>
+        </div>
+        <div class="sessions-grid">
+          <article class="session-card">
+            <span class="session-type">Customer service · Copilot Studio</span>
+            <h3>Building Agentic Customer Service Solutions with Copilot Studio and Real-Time Voice</h3>
+            <p>Build a customer service agent with Copilot Studio's Customer Conversation Harness, then connect enterprise knowledge, business actions, Dynamics 365, Teams Phone Agents, voice, and human escalation.</p>
+            <a class="text-link" href="https://sessionize.com/s/holgerimbery/building-agentic-customer-service-solutions-with-c/193391" target="_blank" rel="noopener noreferrer">Session details <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+          </article>
+          <article class="session-card">
+            <span class="session-type">Architecture · Voice self-service</span>
+            <h3>One Goal, Two Paths - Choosing the Right Architecture for AI-Powered Voice Self-Service</h3>
+            <p>Compare Dynamics 365 Contact Center and Teams Phone Agents with Copilot Studio through one customer scenario, and leave with a practical framework for choosing the right architecture.</p>
+            <a class="text-link" href="https://sessionize.com/s/holgerimbery/one-goal-two-paths-choosing-the-right-architecture/190838" target="_blank" rel="noopener noreferrer">Session details <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+          </article>
+          <article class="session-card">
+            <span class="session-type">ALM · GitHub Actions</span>
+            <h3>From Maker Success to Enterprise Success: ALM and GitHub Actions for Microsoft Copilot Studio Agents</h3>
+            <p>Move Copilot Studio agents from proof of concept to production with solutions, source control, lifecycle management, automated deployments, governance, and operational ownership.</p>
+            <a class="text-link" href="https://sessionize.com/s/holgerimbery/from-maker-success-to-enterprise-success-alm-and-g/190878" target="_blank" rel="noopener noreferrer">Session details <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+          </article>
+          <article class="session-card">
+            <span class="session-type">FinOps · Agentic enterprise</span>
+            <h3>FinOps for Agents: Managing the Economics of the Agentic Enterprise</h3>
+            <p>Connect agent runtimes and consumption telemetry to cost allocation, governance, and outcomes, measuring cost per successful task and business value, not just tokens.</p>
+            <a class="text-link" href="https://sessionize.com/s/holgerimbery/finops-for-agents-managing-the-economics-of-the-ag/193876" target="_blank" rel="noopener noreferrer">Session details <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+          </article>
+          <article class="session-card">
+            <span class="session-type">Multi-agent systems · Copilot Studio</span>
+            <h3>From Harness to Handoff: Multi-Agent Architecture in Microsoft Copilot Studio</h3>
+            <p>Choose the right harness and composition pattern for each workload, then design clear context handoffs, access controls, evaluation, monitoring, and human checkpoints.</p>
+            <a class="text-link" href="https://sessionize.com/s/holgerimbery/from-harness-to-handoff-multi-agent-architecture-i/155722" target="_blank" rel="noopener noreferrer">Session details <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+          </article>
+        </div>
+        <p class="section-footnote">For the complete session list and latest updates, visit <a href="https://sessionize.com/holgerimbery/" target="_blank" rel="noopener noreferrer">Holger's Sessionize profile</a>.</p>
+      </div>
+    </section>
+
+    <section class="section" id="archive">
+      <div class="container">
+        <div class="section-heading">
+          <div><span class="section-kicker">Previous talks</span><h2>More topics from the stage.</h2></div>
+          <p>Previous sessions, with slides and demos in the talk repository.</p>
+        </div>
+        <div class="archive-grid">
+          <article class="session-card">
+            <span class="session-type">Copilot Studio</span>
+            <h3>Building Agents with Copilot Studio: From Orchestration to Customer Service</h3>
+            <p>Choose the right harness for your workload, connect enterprise knowledge and tools, and design event-driven workflows with clear human checkpoints. Explore customer-facing chat and voice scenarios, with the Customer Conversation harness explicitly covered as preview.</p>
+          </article>
+          <article class="session-card">
+            <span class="session-type">Agent evaluation</span>
+            <h3>Rethinking Agent Testing: Repeatable Evaluations in Copilot Studio</h3>
+            <p>Build representative test conversations, score response quality, and detect regressions before publishing. Demonstrate the native Evaluate tab (preview), explain its scoring, signed-in user context, and credit usage, and compare it with batch testing and rubrics in the separately maintained Copilot Agent Kit.</p>
+            <p class="archive-speakers">Presented with Jennifer Krause · <a href="https://www.linkedin.com/in/krause-jennifer" target="_blank" rel="noopener noreferrer" aria-label="Jennifer Krause on LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn</a></p>
+            <p class="archive-speakers">At ColorCloud 2026.</p>
+          </article>
+          <article class="session-card">
+            <span class="session-type">Dynamics 365</span>
+            <h3>From Inbox to Resolution: Copilot Studio &amp; Dynamics 365</h3>
+            <p>Design a composed service solution that connects email-triggered workflows, business actions, and Dynamics 365 case management. Extend it to chat and voice with human escalation, distinguishing the Customer Conversation harness (preview) from channel-specific capabilities and deployment requirements.</p>
+          </article>
+          <article class="session-card">
+            <span class="session-type">Multi-agent systems</span>
+            <h3>Multi-Agent Patterns in Copilot Studio: Composition, Tools &amp; Handoffs</h3>
+            <p>Decide when a single agent is enough, when to use child agents, and when separate ownership calls for connected agents. Distinguish A2A task delegation from MCP tool access, and design context handoffs, identity boundaries, and evaluations. Preview and early-release integrations are identified rather than presented as generally available.</p>
+            <p class="archive-speakers">Presented with Jennifer Krause · <a href="https://www.linkedin.com/in/krause-jennifer" target="_blank" rel="noopener noreferrer" aria-label="Jennifer Krause on LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn</a></p>
+            <p class="archive-speakers">European Power Platform Conference, Copenhagen (2026) · Nordic Summit, Billund (2026).</p>
+          </article>
+          <article class="session-card">
+            <span class="session-type">Workshop</span>
+            <h3>Agent in a Day: Build, Test &amp; Publish</h3>
+            <p>A hands-on introduction aligned with Microsoft's current Agent in a Day learning path: declarative agents in Microsoft 365 Copilot Chat and custom engine agents in Copilot Studio. Explore knowledge, tools, agent flows, generative orchestration, and autonomous functionality, with practical testing and publishing steps.</p>
+            <p class="archive-speakers">Presented with Jennifer Krause · <a href="https://www.linkedin.com/in/krause-jennifer" target="_blank" rel="noopener noreferrer" aria-label="Jennifer Krause on LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i> LinkedIn</a></p>
+            <p class="archive-speakers">Monthly, at various locations.</p>
+          </article>
+          <article class="session-card">
+            <span class="session-type">Microsoft Foundry</span>
+            <h3>Agentic AI with Microsoft Foundry: From Prototype to Production</h3>
+            <p>Design an agent solution with Microsoft Foundry Agent Service and choose an appropriate runtime and tool integration strategy. Cover Microsoft Entra identity, access controls, tracing, evaluations, and operational monitoring, separating production architecture from preview capabilities.</p>
+          </article>
+        </div>
+        <p class="section-footnote"><a class="text-link" href="https://github.com/instruo365/talks/tree/main" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> Browse previous talk content</a></p>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="expertise">
+      <div class="container">
+        <div class="section-heading">
+          <div><span class="section-kicker">Topic areas</span><h2>Where I work and speak.</h2></div>
+          <p>From low-code development to enterprise agent operations: connect strategic direction with the practical details of implementation.</p>
+        </div>
+        <div class="expertise-grid">
+          <article class="expertise-card"><span class="icon"><i class="fas fa-brain" aria-hidden="true"></i></span><h3>AI Foundry &amp; Agentic AI</h3><p>Building autonomous, multi-agent systems on Microsoft AI Foundry and Azure AI Services.</p></article>
+          <article class="expertise-card"><span class="icon"><i class="fas fa-comments" aria-hidden="true"></i></span><h3>Copilot Studio</h3><p>Custom agents, voice bots, test automation, and multi-agent orchestration.</p></article>
+          <article class="expertise-card"><span class="icon"><i class="fas fa-bolt" aria-hidden="true"></i></span><h3>Power Platform</h3><p>Low-code apps, Power Automate flows, and enterprise-grade automation solutions.</p></article>
+          <article class="expertise-card"><span class="icon"><i class="fas fa-cloud" aria-hidden="true"></i></span><h3>Microsoft 365 Copilot</h3><p>Productivity transformation, Copilot adoption strategies, and governance in M365.</p></article>
+          <article class="expertise-card"><span class="icon"><i class="fas fa-server" aria-hidden="true"></i></span><h3>Azure AI Services</h3><p>Language, Speech, Vision, and cognitive services integrated into business workflows.</p></article>
+          <article class="expertise-card"><span class="icon"><i class="fas fa-headset" aria-hidden="true"></i></span><h3>Dynamics 365</h3><p>Customer Service automation, AI-driven CRM, and contact centre transformation.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+      <div class="container">
+        <div class="section-heading">
+          <div><span class="section-kicker">Speaking &amp; architecture</span><h2>Let's make it practical.</h2></div>
+          <p>For conference sessions, workshops, or conversations about enterprise AI architecture, send me a note.</p>
+        </div>
+        <div class="contact-layout">
+          <div class="contact-copy">
+            <h3>Bring real-world experience to your event.</h3>
+            <p>Sessions can be adapted to your audience, event format, and technical depth.</p>
+            <ul class="contact-list">
+              <li><i class="fas fa-check" aria-hidden="true"></i> Conferences, meetups, and corporate events</li>
+              <li><i class="fas fa-check" aria-hidden="true"></i> Sessions in English and German</li>
+              <li><i class="fas fa-check" aria-hidden="true"></i> Practical workshops and architecture discussions</li>
+            </ul>
+          </div>
+          <div class="contact-card">
+            <form action="https://formspree.io/f/xvgagvev" class="contact-form" target="_top" method="POST">
+              <div class="field"><label for="name">Your name</label><input id="name" name="name" placeholder="Jane Smith" autocomplete="name"></div>
+              <div class="field"><label for="email">Email address</label><input id="email" name="email" type="email" placeholder="jane@yourcompany.com" autocomplete="email" required></div>
+              <div class="field"><label for="event">Event or organisation</label><input id="event" name="event" placeholder="Event name and date"></div>
+              <div class="field"><label for="message">What would you like to discuss?</label><textarea id="message" name="message" placeholder="Audience, format, topic, and any details that would help."></textarea></div>
+              <button class="form-submit" type="submit"><i class="fas fa-paper-plane" aria-hidden="true"></i> Send request</button>
+            </form>
           </div>
         </div>
       </div>
+    </section>
+  </main>
 
-      <!-- Holger Imbery -->
-      <div class="speaker-card">
-        <div class="speaker-card-header">
-          <a href="https://linkedin.com/in/holgerimbery" target="_blank">
-            <img src="images/holger-profile.jpg" alt="Holger Imbery" class="speaker-avatar">
-          </a>
-          <div class="speaker-meta">
-            <h3>Holger Imbery</h3>
-            <div class="speaker-role">Principal Architect · Microsoft MVP &amp; MCT</div>
-            <div class="speaker-company"><i class="fas fa-building" style="font-size:0.8rem; margin-right:4px;"></i> NTT Germany AG &amp; Co. KG (NTT DATA Group)</div>
-            <div class="speaker-location"><i class="fas fa-map-marker-alt"></i> Berlin, Germany</div>
-          </div>
-        </div>
-        <div class="speaker-card-body">
-          <p class="speaker-bio">
-            Holger is a Principal Architect and Microsoft MVP specializing in agentic AI, autonomous systems, and the Microsoft Power Platform — with a deep focus on Copilot Studio and Azure AI Services. He designs and implements agentic AI systems that support autonomous decision-making and intelligent process automation in enterprise environments, building secure, scalable, and well-governed solutions.          </p>
-          <div class="expertise-tags">
-            <span class="tag">Copilot Studio</span>
-            <span class="tag">Multi-Agent Systems</span>
-            <span class="tag">Azure AI Services</span>
-            <span class="tag">Power Automate</span>
-            <span class="tag">MCP</span>
-            <span class="tag">AI Foundry</span>
-            <span class="tag">Microsoft 365 Copilot</span>
-          </div>
-          <div class="speaker-links">
-            <a href="https://www.linkedin.com/in/holgerimbery/" target="_blank" class="speaker-link-btn">
-              <i class="fab fa-linkedin"></i> LinkedIn
-            </a>
-            <a href="https://sessionize.com/holgerimbery/" target="_blank" class="speaker-link-btn">
-              <i class="fas fa-microphone"></i> Sessionize
-            </a>
-            <a href="https://holgerimbery.blog" target="_blank" class="speaker-link-btn">
-              <i class="fas fa-blog"></i> Blog
-            </a>
-          </div>
-        </div>
-      </div>
-
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <p class="footer-copy">&copy; <span id="year">2026</span> Holger Imbery · Architect &amp; Speaker</p>
+      <nav class="footer-links" aria-label="Social and project links">
+        <a href="https://www.linkedin.com/in/holgerimbery/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://holgerimbery.blog" target="_blank" rel="noopener noreferrer">Blog</a>
+        <a href="https://sessionize.com/holgerimbery/" target="_blank" rel="noopener noreferrer">Sessionize</a>
+        <a href="https://github.com/instruo365/talks/tree/main" target="_blank" rel="noopener noreferrer">Talk content</a>
+        <a href="https://www.mate365.app/" target="_blank" rel="noopener noreferrer">Tenant Manager</a>
+        <a href="https://labs.instruo365.de" target="_blank" rel="noopener noreferrer">Labs</a>
+        <a href="https://holgerimbery.blog/impressum/" target="_blank" rel="noopener noreferrer">Impressum</a>
+      </nav>
     </div>
-  </div>
-</section>
+  </footer>
+  <a class="back-to-top" href="#top" aria-label="Back to top"><i class="fas fa-arrow-up" aria-hidden="true"></i></a>
+  <script>
+    const themeButton = document.getElementById("darkModeToggle");
+    const themeIcon = themeButton.querySelector("i");
 
-<div class="divider"></div>
+    function setTheme(theme) {
+      document.documentElement.setAttribute("data-theme", theme);
+      themeButton.setAttribute("aria-pressed", String(theme === "dark"));
+      themeButton.setAttribute("aria-label", theme === "dark" ? "Switch to light theme" : "Switch to dark theme");
+      themeIcon.className = theme === "dark" ? "fas fa-sun" : "fas fa-moon";
+    }
 
-<!-- ══ TALKS ══ -->
-<section id="talks" class="alt-bg">
-  <div class="section-inner">
-    <div class="section-header">
-      <span class="section-label">Current Sessions</span>
-      <h2 class="section-title">Ready-to-Book Talks</h2>
-      <p class="section-desc">All sessions are available in English and German, and can be tailored to your audience's level and time slot.</p>
-    </div>
+    const requestedTheme = new URLSearchParams(window.location.search).get("scoutTheme");
+    const savedTheme = localStorage.getItem("theme");
+    if (requestedTheme === "light" || requestedTheme === "dark") setTheme(requestedTheme);
+    else if (savedTheme === "light" || savedTheme === "dark") setTheme(savedTheme);
+    else setTheme(document.documentElement.getAttribute("data-theme"));
 
-    <div class="sessions-grid">
+    themeButton.addEventListener("click", () => {
+      const nextTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      setTheme(nextTheme);
+      localStorage.setItem("theme", nextTheme);
+    });
 
-      <div class="session-card jennifer">
-        <div class="session-speakers">
-          <span class="session-speaker-tag jennifer"><i class="fas fa-user"></i> Jennifer Krause</span>
-          <span class="session-speaker-sep">&amp;</span>
-          <span class="session-speaker-tag holger"><i class="fas fa-user"></i> Holger Imbery</span>
-        </div>
-        <h4>Building Autonomous Agents with Copilot Studio: A Practical Introduction</h4>
-        <p>Design and integrate autonomous agents in Microsoft Copilot Studio — from core concepts to voice-based customer service scenarios. Includes live examples and Q&amp;A.</p>
-        <div class="session-meta">
-          <span class="session-pill"><i class="fas fa-clock"></i> 60 min</span>
-          <span class="session-pill">Intermediate</span>
-          <span class="session-pill">EN / DE</span>
-        </div>
-      </div>
-
-      <div class="session-card jennifer">
-        <div class="session-speakers">
-          <span class="session-speaker-tag jennifer"><i class="fas fa-user"></i> Jennifer Krause</span>
-          <span class="session-speaker-sep">&amp;</span>
-          <span class="session-speaker-tag holger"><i class="fas fa-user"></i> Holger Imbery</span>
-        </div>
-        <h4>Rethinking Test Automation: Streamlining Agent Development with the Copilot Studio Kit</h4>
-        <p>How the Copilot Studio Kit transforms test automation for custom agents — with live demos, workflow optimisation techniques, and real-world use cases.</p>
-        <div class="session-meta">
-          <span class="session-pill"><i class="fas fa-clock"></i> 60 min</span>
-          <span class="session-pill">Intermediate</span>
-          <span class="session-pill">EN / DE</span>
-        </div>
-      </div>
-
-      <div class="session-card jennifer">
-        <div class="session-speakers">
-          <span class="session-speaker-tag jennifer"><i class="fas fa-user"></i> Jennifer Krause</span>
-          <span class="session-speaker-sep">&amp;</span>
-          <span class="session-speaker-tag holger"><i class="fas fa-user"></i> Holger Imbery</span>
-        </div>
-        <h4>Enhancing Customer Service with Autonomous Agents &amp; Dynamics 365</h4>
-        <p>Autonomous agents integrated with Dynamics 365 Customer Service — automating ticket creation, self-service flows, and seamless human escalation for incoming email requests.</p>
-        <div class="session-meta">
-          <span class="session-pill"><i class="fas fa-clock"></i> 45–60 min</span>
-          <span class="session-pill">Intermediate</span>
-          <span class="session-pill">DE / EN</span>
-        </div>
-      </div>
-
-      <div class="session-card holger">
-        <div class="session-speakers">
-          <span class="session-speaker-tag jennifer"><i class="fas fa-user"></i> Jennifer Krause</span>
-          <span class="session-speaker-sep">&amp;</span>
-          <span class="session-speaker-tag holger"><i class="fas fa-user"></i> Holger Imbery</span>
-        </div>
-        <h4>Multi-Agent Architecture Patterns in Copilot Studio</h4>
-        <p>Design patterns for nested (child) agents, connected agents, A2A collaboration, and MCP-enabled autonomous agents — with reference architectures and live demos.</p>
-        <div class="session-meta">
-          <span class="session-pill"><i class="fas fa-clock"></i> 60 min</span>
-          <span class="session-pill">Intermediate–Advanced</span>
-          <span class="session-pill">EN / DE</span>
-        </div>
-      </div>
-
-      <div class="session-card holger">
-        <div class="session-speakers">
-          <span class="session-speaker-tag jennifer"><i class="fas fa-user"></i> Jennifer Krause</span>
-          <span class="session-speaker-sep">&amp;</span>
-          <span class="session-speaker-tag holger"><i class="fas fa-user"></i> Holger Imbery</span>
-        </div>
-        <h4>Agent in a Day Workshop</h4>
-        <p>Full-day hands-on workshop: build, test, and deploy your first AI agent on the Microsoft Power Platform. Covers Copilot Studio, Power Automate, and Azure AI integration.</p>
-        <div class="session-meta">
-          <span class="session-pill"><i class="fas fa-clock"></i> Full day</span>
-          <span class="session-pill">All levels</span>
-          <span class="session-pill">EN / DE</span>
-        </div>
-      </div>
-
-      <div class="session-card holger">
-        <div class="session-speakers">
-          <span class="session-speaker-tag jennifer"><i class="fas fa-user"></i> Jennifer Krause</span>
-          <span class="session-speaker-sep">&amp;</span>
-          <span class="session-speaker-tag holger"><i class="fas fa-user"></i> Holger Imbery</span>
-        </div>
-        <h4>Agentic AI on Azure: From Concept to Production</h4>
-        <p>Practical guide to building autonomous, secure, and scalable AI systems with Azure AI Services, Azure Functions, and Copilot Studio — including governance and responsible AI practices.</p>
-        <div class="session-meta">
-          <span class="session-pill"><i class="fas fa-clock"></i> 45–60 min</span>
-          <span class="session-pill">Intermediate</span>
-          <span class="session-pill">EN / DE</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ══ EXPERTISE ══ -->
-<section id="expertise">
-  <div class="section-inner">
-    <div class="section-header">
-      <span class="section-label">Topic Areas</span>
-      <h2 class="section-title">Expertise at a Glance</h2>
-      <p class="section-desc">From low-code citizen development to enterprise-grade agentic AI — pick the topics that fit your event.</p>
-    </div>
-
-    <div class="expertise-grid">
-      <div class="expertise-card">
-        <span class="icon">🤖</span>
-        <strong>AI Foundry &amp; Agentic AI</strong>
-        <p>Building autonomous, multi-agent systems on Microsoft AI Foundry and Azure AI Services.</p>
-      </div>
-      <div class="expertise-card">
-        <span class="icon">💬</span>
-        <strong>Copilot Studio</strong>
-        <p>Custom agents, voice bots, test automation, and multi-agent orchestration.</p>
-      </div>
-      <div class="expertise-card">
-        <span class="icon">⚡</span>
-        <strong>Power Platform</strong>
-        <p>Low-code apps, Power Automate flows, and enterprise-grade automation solutions.</p>
-      </div>
-      <div class="expertise-card">
-        <span class="icon">🌐</span>
-        <strong>Microsoft 365 Copilot</strong>
-        <p>Productivity transformation, Copilot adoption strategies, and governance in M365.</p>
-      </div>
-      <div class="expertise-card">
-        <span class="icon">☁️</span>
-        <strong>Azure AI Services</strong>
-        <p>Language, Speech, Vision, and cognitive services integrated into business workflows.</p>
-      </div>
-      <div class="expertise-card">
-        <span class="icon">🎯</span>
-        <strong>Dynamics 365</strong>
-        <p>Customer Service automation, AI-driven CRM, and contact centre transformation.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ══ CONTACT ══ -->
-<section id="contact" class="contact-section">
-  <div class="section-inner">
-    <div class="section-header">
-      <span class="section-label">Book a Speaker</span>
-      <h2 class="section-title">Let's Talk</h2>
-      <p class="section-desc">Interested in having Jennifer and Holger speak at your event?</p>
-    </div>
-
-    <div class="contact-wrap">
-      <div class="contact-info">
-        <h3>Why instruo365?</h3>
-        <p>We are a nonprofit community initiative. All speaking is done just for passion for sharing knowledge.</p>
-        <ul class="contact-bullets">
-          <li><i class="fas fa-check-circle"></i> Available for conferences, meetups &amp; corporate events</li>
-          <li><i class="fas fa-check-circle"></i> Sessions in English and German</li>
-          <li><i class="fas fa-check-circle"></i> Custom workshops on request</li>
-          <li><i class="fas fa-check-circle"></i> Community-first, nonprofit ethos</li>
-          <li><i class="fas fa-clock"></i> We typically respond within 1–2 business days</li>
-        </ul>
-      </div>
-
-      <form action="https://formspree.io/f/xvgagvev" class="fs-form" target="_top" method="POST">
-        <div>
-          <label class="fs-label" for="name">Your Name</label>
-          <input class="fs-input" id="name" name="name" placeholder="Jane Smith" />
-        </div>
-        <div>
-          <label class="fs-label" for="email">Email Address</label>
-          <input class="fs-input" id="email" name="email" type="email" placeholder="jane@yourcompany.com" required />
-        </div>
-        <div>
-          <label class="fs-label" for="event">Event / Conference</label>
-          <input class="fs-input" id="event" name="event" placeholder="e.g. Microsoft Community Summit 2026" />
-        </div>
-        <div>
-          <label class="fs-label" for="message">Tell us about your event</label>
-          <textarea class="fs-textarea" id="message" name="message" placeholder="Audience, date, format, topic preferences…"></textarea>
-        </div>
-        <div style="text-align: right;">
-          <button class="fs-button" type="submit"><i class="fas fa-paper-plane"></i> Send Request</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</section>
-
-<!-- ══ FOOTER ══ -->
-<footer>
-  <p>&copy; 2025 <strong>instruo365</strong> — Nonprofit &amp; Community-First</p>
-  <div class="footer-links">
-    <a href="https://www.linkedin.com/in/krause-jennifer" target="_blank"><i class="fab fa-linkedin"></i> Jennifer on LinkedIn</a>
-    <a href="https://www.linkedin.com/in/holgerimbery/" target="_blank"><i class="fab fa-linkedin"></i> Holger on LinkedIn</a>
-    <a href="https://sessionize.com/jkrause/" target="_blank"><i class="fas fa-microphone"></i> Jennifer on Sessionize</a>
-    <a href="https://sessionize.com/holgerimbery/" target="_blank"><i class="fas fa-microphone"></i> Holger on Sessionize</a>
-    <a href="https://holgerimbery.blog" target="_blank"><i class="fas fa-blog"></i> Holger's Blog</a>
-  </div>
-</footer>
-
-<!-- Scroll to Top -->
-<button onclick="topFunction()" id="topBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
-
-<script>
-  window.onscroll = function() {
-    document.getElementById("topBtn").style.display =
-      (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) ? "block" : "none";
-  };
-  function topFunction() {
-    document.body.scrollTop = 0;
-    document.documentElement.scrollTop = 0;
-  }
-
-  const toggleBtn = document.getElementById('darkModeToggle');
-  const icon = toggleBtn.querySelector('i');
-  function setTheme(theme) {
-    document.documentElement.setAttribute('data-theme', theme);
-    icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
-  }
-  const savedTheme = localStorage.getItem('theme');
-  if (savedTheme) setTheme(savedTheme);
-  toggleBtn.onclick = function() {
-    const next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    setTheme(next);
-    localStorage.setItem('theme', next);
-  };
-</script>
+    document.getElementById("year").textContent = String(new Date().getFullYear());
+  </script>
 </body>
 </html>

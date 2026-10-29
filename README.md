@@ -1,9 +1,16 @@
-# instruo365 network website
+# Holger Imbery | Architect & Speaker
 
-by [@jenkra91](https://github.com/jenkra91) &amp; [@holgerimbery](https://github.com/holgerimbery)
+Personal speaker and architecture profile for Holger Imbery, Principal Architect, Microsoft MVP and MCT.
 
+The static site highlights current talks from [Sessionize](https://sessionize.com/holgerimbery/), previous talk topics and materials, areas of expertise, and contact details.
 
-## motivation
-At instruo365, we believe knowledge should be a right, not a privilege. 
-By delivering top-tier training purely on a nonprofit basis, we open doors for communities to grow, innovate, and succeed. 
-Our goal is simple: inspire, instruct, and empower — without barriers.
+The six earlier talk topics were refreshed against Microsoft documentation on 29 October 2026. The updated descriptions distinguish preview capabilities from production architecture. Original talk materials remain unchanged. The former Copilot Studio Kit is currently named [Copilot Agent Kit](https://github.com/microsoft/Power-CAT-Copilot-Studio-Kit); its maintained repository still documents testing capabilities.
+
+## Links
+
+- [LinkedIn](https://www.linkedin.com/in/holgerimbery/)
+- [Blog](https://holgerimbery.blog)
+- [Sessionize](https://sessionize.com/holgerimbery/)
+- [Previous talk content](https://github.com/instruo365/talks/tree/main)
+- [Tenant Manager](https://www.mate365.app/)
+- [Labs](https://labs.instruo365.de)
