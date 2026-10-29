@@ -409,23 +409,53 @@
     .archive-grid .session-type { color: var(--cp-text-muted); }
     .expertise-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 1rem;
     }
-    .expertise-card { padding: 1.5rem; }
+    #expertise .section-heading { display: block; }
+    .expertise-card {
+      display: grid;
+      grid-template-columns: 2.7rem minmax(0, 1fr);
+      align-content: start;
+      gap: 1rem;
+      padding: clamp(1.5rem, 3vw, 2rem);
+    }
     .expertise-card .icon {
       display: grid;
+      align-self: center;
       width: 2.7rem;
       height: 2.7rem;
       place-items: center;
-      margin-bottom: 1.1rem;
       color: var(--cp-accent);
       background: var(--cp-accent-soft);
       border-radius: 0.625rem;
       font-size: 1.1rem;
     }
-    .expertise-card h3 { margin: 0 0 0.5rem; font-size: 1.05rem; }
-    .expertise-card p { margin: 0; color: var(--cp-text-muted); font-size: 0.9rem; }
+    .expertise-card h3 { align-self: center; margin: 0; font-size: 1.15rem; }
+    .expertise-card p { grid-column: 1 / -1; margin: 0; color: var(--cp-text-muted); font-size: 1rem; }
+    .expertise-copy { max-width: 75ch; }
+    .expertise-copy h3 { margin: 0 0 1rem; font-size: 1.35rem; }
+    .expertise-copy p { margin: 0; color: var(--cp-text-muted); font-size: 1.05rem; }
+    .expertise-copy p + p { margin-top: 1rem; }
+    .expertise-intro { margin-bottom: 2.5rem; }
+    .expertise-intro p:first-child { color: var(--cp-text); font-size: 1.25rem; }
+    .expertise-summary {
+      max-width: none;
+      margin-top: 2.5rem;
+      padding: clamp(1.5rem, 4vw, 2.5rem);
+      border: 1px solid var(--cp-border);
+      border-left: 4px solid var(--cp-accent);
+      border-radius: 0 16px 16px 0;
+      background: var(--cp-surface);
+    }
+    .expertise-summary p { max-width: 75ch; }
+    .expertise-summary .expertise-question {
+      color: var(--cp-text);
+      font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+      font-weight: 600;
+      line-height: 1.45;
+    }
+    .expertise-question strong { font-weight: inherit; }
 
     .contact-section {
       background: var(--cp-accent);
@@ -692,16 +722,59 @@
     <section class="section section-alt" id="expertise">
       <div class="container">
         <div class="section-heading">
-          <div><span class="section-kicker">Topic areas</span><h2>Where I work and speak.</h2></div>
-          <p>From low-code development to enterprise agent operations: connect strategic direction with the practical details of implementation.</p>
+          <span class="section-kicker">Topic Areas</span>
+          <h2>Where I work and speak</h2>
+        </div>
+        <div class="expertise-copy expertise-intro">
+          <p>My work sits at the intersection of <strong>enterprise AI, intelligent automation, low-code development, and agentic systems</strong>.</p>
+          <p>I focus on how organizations can move from experimentation and individual copilots toward scalable AI and automation capabilities that work across applications, data, processes, and teams. From low-code solutions to autonomous agents and enterprise-wide orchestration, I connect strategic direction with the practical realities of architecture, implementation, governance, security, operations, and adoption.</p>
         </div>
         <div class="expertise-grid">
-          <article class="expertise-card"><span class="icon"><i class="fas fa-brain" aria-hidden="true"></i></span><h3>AI Foundry &amp; Agentic AI</h3><p>Building autonomous, multi-agent systems on Microsoft AI Foundry and Azure AI Services.</p></article>
-          <article class="expertise-card"><span class="icon"><i class="fas fa-comments" aria-hidden="true"></i></span><h3>Copilot Studio</h3><p>Custom agents, voice bots, test automation, and multi-agent orchestration.</p></article>
-          <article class="expertise-card"><span class="icon"><i class="fas fa-bolt" aria-hidden="true"></i></span><h3>Power Platform</h3><p>Low-code apps, Power Automate flows, and enterprise-grade automation solutions.</p></article>
-          <article class="expertise-card"><span class="icon"><i class="fas fa-cloud" aria-hidden="true"></i></span><h3>Microsoft 365 Copilot</h3><p>Productivity transformation, Copilot adoption strategies, and governance in M365.</p></article>
-          <article class="expertise-card"><span class="icon"><i class="fas fa-server" aria-hidden="true"></i></span><h3>Azure AI Services</h3><p>Language, Speech, Vision, and cognitive services integrated into business workflows.</p></article>
-          <article class="expertise-card"><span class="icon"><i class="fas fa-headset" aria-hidden="true"></i></span><h3>Dynamics 365</h3><p>Customer Service automation, AI-driven CRM, and contact centre transformation.</p></article>
+          <article class="expertise-card">
+            <span class="icon"><i class="fas fa-brain" aria-hidden="true"></i></span>
+            <h3>AI Foundry &amp; Agentic AI</h3>
+            <p>Designing and building <strong>autonomous and multi-agent systems</strong> with Microsoft AI Foundry, Azure AI, and the broader Microsoft agent ecosystem.</p>
+            <p>Topics include agent architecture, reasoning and orchestration patterns, grounding and enterprise data integration, model selection, tools and actions, multi-agent collaboration, observability, evaluation, security, and responsible AI. I’m particularly interested in what happens after the prototype: how organizations operate, govern, monitor, scale, and financially manage agentic AI in production.</p>
+          </article>
+          <article class="expertise-card">
+            <span class="icon"><i class="fas fa-comments" aria-hidden="true"></i></span>
+            <h3>Copilot Studio</h3>
+            <p>Building <strong>enterprise agents and conversational AI experiences</strong> with Microsoft Copilot Studio.</p>
+            <p>This includes custom agents, voice-enabled experiences, autonomous agents, agent flows, test automation, connectors and integrations, multi-agent orchestration, and extending Microsoft 365 Copilot with organization-specific knowledge and actions.</p>
+            <p>Beyond building the agent itself, I focus on the enterprise lifecycle around it: environments, ALM, governance, security, testing, monitoring, adoption, and establishing repeatable patterns for moving agents from experimentation into production.</p>
+          </article>
+          <article class="expertise-card">
+            <span class="icon"><i class="fas fa-bolt" aria-hidden="true"></i></span>
+            <h3>Power Platform</h3>
+            <p>Using <strong>Power Apps, Power Automate, Power Pages, Dataverse, and the wider Power Platform</strong> to turn business processes into scalable digital solutions.</p>
+            <p>My focus extends beyond individual apps and flows to enterprise automation architecture: combining low-code, APIs, connectors, cloud services, RPA, AI, agents, and human-in-the-loop processes. This also includes governance, ALM, environment strategy, reusable components, Center of Excellence approaches, and designing automation that remains maintainable as adoption grows.</p>
+          </article>
+          <article class="expertise-card">
+            <span class="icon"><i class="fas fa-cloud" aria-hidden="true"></i></span>
+            <h3>Microsoft 365 Copilot</h3>
+            <p>Helping organizations turn Microsoft 365 Copilot from an individual productivity tool into part of a broader <strong>enterprise AI transformation</strong>.</p>
+            <p>Topics include adoption strategies, use-case discovery, Copilot extensibility, agents, enterprise search and knowledge, governance, information readiness, security, and measuring business value. I’m especially interested in how Microsoft 365 Copilot connects employees, organizational knowledge, business processes, and specialized agents to create new ways of working across the enterprise.</p>
+          </article>
+          <article class="expertise-card">
+            <span class="icon"><i class="fas fa-server" aria-hidden="true"></i></span>
+            <h3>Azure AI Services</h3>
+            <p>Integrating <strong>Azure AI capabilities into real-world business processes and enterprise applications</strong>.</p>
+            <p>This covers language, speech, vision, document processing, search, content understanding, and other cognitive capabilities, as well as how they can complement generative AI and agentic architectures.</p>
+            <p>The emphasis is on composable solutions: combining AI services, enterprise data, APIs, automation, agents, and existing applications rather than treating AI as an isolated technology. Architecture, security, scalability, responsible AI, observability, and operational cost are important parts of that conversation.</p>
+          </article>
+          <article class="expertise-card">
+            <span class="icon"><i class="fas fa-headset" aria-hidden="true"></i></span>
+            <h3>Dynamics 365</h3>
+            <p>Transforming <strong>CRM, customer service, and contact centre operations</strong> with AI, automation, Copilot, and agents.</p>
+            <p>My focus includes Dynamics 365 Customer Service, AI-supported service processes, conversational and voice experiences, case and knowledge automation, intelligent routing, agent assistance, and automation across the customer journey.</p>
+            <p>A key theme is connecting Dynamics 365 with Copilot Studio, Power Platform, Azure AI, Microsoft 365, and enterprise systems to create end-to-end processes where humans, copilots, automation, and autonomous agents can work together.</p>
+          </article>
+        </div>
+        <div class="expertise-copy expertise-summary">
+          <h3>The common thread</h3>
+          <p>Across all six areas, the question I’m interested in is increasingly the same:</p>
+          <p class="expertise-question"><strong>How do we move from isolated AI demos and automations to a governed, scalable enterprise capability where people, copilots, agents, data, and business processes work together?</strong></p>
+          <p>That means looking beyond the technology itself and addressing the things that ultimately determine whether enterprise AI succeeds: <strong>architecture, governance, security, observability, FinOps, lifecycle management, adoption, and measurable business value.</strong></p>
         </div>
       </div>
     </section>
