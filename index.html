@@ -57,6 +57,8 @@
       --cp-danger: #dc2626;
       --cp-warning: #f59e0b;
       --cp-link: #0078d4;
+      --cp-button: #0078d4;
+      --cp-button-hover: #0063b1;
       --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
       --cp-overlay: rgba(255, 255, 255, 0.8);
       --cp-panel: rgba(255, 255, 255, 0.86);
@@ -246,21 +248,19 @@
       justify-content: center;
       gap: 0.6rem;
       padding: 0.75rem 1.1rem;
-      color: var(--cp-text);
-      background: var(--cp-surface);
-      border: 1px solid var(--cp-surface);
+      color: #ffffff;
+      background: var(--cp-button);
+      border: 1px solid var(--cp-button);
       border-radius: 0.625rem;
       text-decoration: none;
       font-weight: 750;
       transition: transform 160ms ease, background 160ms ease;
     }
-    .button:hover { transform: translateY(-2px); background: var(--cp-bg-elevated); }
-    .button-outline {
-      color: var(--cp-accent-fg);
-      background: var(--cp-accent);
-      border-color: var(--cp-accent-fg);
+    .button:hover {
+      transform: translateY(-2px);
+      background: var(--cp-button-hover);
+      border-color: var(--cp-button-hover);
     }
-    .button-outline:hover { color: var(--cp-text); background: var(--cp-surface); }
     .hero-portrait {
       position: relative;
       justify-self: center;
