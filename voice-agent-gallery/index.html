@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Voice Agent Example Gallery: Customer Service Scenarios | Holger Imbery</title>
-  <meta name="description" content="22 customer service voice agent scenarios built with Copilot Studio, Contact Center Intelligence, Dynamics 365 Contact Center, Teams Phone and Microsoft Foundry, each with a feasibility check.">
+  <meta name="description" content="22 customer service voice agent scenarios you can build with Copilot Studio, Contact Center Intelligence, Dynamics 365 Contact Center, Teams Phone and Microsoft Foundry.">
   <meta name="robots" content="noindex">
   <link rel="canonical" href="https://instruo365.de/voice-agent-gallery/">
   <script>
@@ -37,21 +37,11 @@
   <main id="main" class="wide">
     <p class="eyebrow">Voice agents &middot; Customer service &middot; Microsoft stack</p>
     <h1>Voice Agent Example Gallery</h1>
-    <p class="lead">Customer service scenarios for Copilot Studio, Contact Center Intelligence, Dynamics 365 Contact Center, Teams Phone and Microsoft Foundry, each with a feasibility check.</p>
-    <p class="note"><strong>Status:</strong> Feasibility checked against Microsoft Learn documentation as of October 31, 2026. Most capabilities used here are in preview. Re-check before any production commitment.</p>
+    <p class="lead">22 customer service scenarios you can build with Copilot Studio, Contact Center Intelligence, Dynamics 365 Contact Center, Teams Phone and Microsoft Foundry.</p>
+    <p class="note"><strong>Note:</strong> Based on Microsoft Learn documentation as of October 31, 2026. Many of the capabilities used here are in preview.</p>
 
     <h2 id="read">1. How to read this gallery</h2>
-    <p>Each scenario has user stories ("As a ... I want ... so that ..."), the events it relies on (harness events in Copilot Studio, or real-time API events in Foundry), an implementation outline and a feasibility check with one of three ratings:</p>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Rating</th><th>Meaning</th></tr></thead>
-        <tbody>
-          <tr><td><span class="badge ok">Documented</span></td><td>Every building block is described in current Microsoft Learn documentation for the toolset named.</td></tr>
-          <tr><td><span class="badge changed">Documented with changes</span></td><td>Buildable, but the first draft used the wrong path or feature. The corrected path is shown.</td></tr>
-          <tr><td><span class="badge poc">Pattern (PoC needed)</span></td><td>Each part exists, but Microsoft does not document this exact combination. Plan a proof of concept.</td></tr>
-        </tbody>
-      </table>
-    </div>
+    <p>Each scenario has user stories ("As a ... I want ... so that ..."), the events it relies on (harness events in Copilot Studio, or real-time API events in Foundry) and an implementation outline.</p>
 
     <h2 id="toolset">2. The toolset in one page</h2>
     <div class="table-wrap">
@@ -59,47 +49,46 @@
         <thead><tr><th>Component</th><th>Role in this gallery</th><th>Key facts that shape the designs</th></tr></thead>
         <tbody>
           <tr><td><strong>Copilot Studio, Customer Conversation harness</strong></td><td>The main agent builder. An agent built on it is called a Customer Assist Agent.</td><td>Multi-agent: a primary agent greets, classifies intent and routes to sub-agents. Speech and Chat are supported by default. Tools: connectors, MCP, REST, prompts, workflows, connected agents (including agents hosted in Foundry). Prebuilt Escalate tool (Teams Phone, Email, Customer Engagement). Biometric Authentication. Memory with 30-day retention. Usage-based billing in Copilot Credits.</td></tr>
-          <tr><td><strong>Harness events</strong></td><td>Deterministic hooks in the conversation</td><td>Conversation Start, End of Conversation, On Error, Prompt Website Login (chat only), Reset Conversation, Silence Detection. With Voice Authentication on: SMS One Time Passcode, Biometric enrollment consent, Speech collection for biometric enrollment and authentication. Events cannot be removed, only disabled or edited. Under the hood an event is a topic.</td></tr>
+          <tr><td><strong>Harness events</strong></td><td>Deterministic hooks in the conversation</td><td>Conversation Start, End of Conversation, On Error, Prompt Website Login (chat only), Reset Conversation, Silence Detection. With Voice Authentication on: SMS One Time Passcode, Biometric enrollment consent, Speech collection for biometric enrollment and authentication. Events can be disabled or edited. Under the hood an event is a topic.</td></tr>
           <tr><td><strong>Harness channels</strong></td><td>Where the agent runs</td><td>Standalone: Demo website, Web chat, Teams Phone. Contact center: Dynamics 365 Contact Center, Genesys, Bring your own.</td></tr>
-          <tr><td><strong>Microsoft Contact Center Intelligence (CCI)</strong></td><td>Intelligent layer across Dynamics 365 Contact Center and other CCaaS platforms</td><td>Same builder as Copilot Studio. <strong>Deploying an agent to a contact center is only possible from the CCI portal, by an Omnichannel Admin.</strong> Manages biometric authentication, fraud detection, quality assurance, real-time and historical dashboards. Connectors for Genesys Cloud (voice, chat, AudioHook) and a universal connector.</td></tr>
+          <tr><td><strong>Microsoft Contact Center Intelligence (CCI)</strong></td><td>Intelligent layer across Dynamics 365 Contact Center and other CCaaS platforms</td><td>Same builder as Copilot Studio. An Omnichannel Admin deploys an agent to a contact center from the CCI portal. Manages biometric authentication, fraud detection, quality assurance, real-time and historical dashboards. Connectors for Genesys Cloud (voice, chat, AudioHook) and a universal connector.</td></tr>
           <tr><td><strong>Dynamics 365 Contact Center</strong></td><td>Telephony, routing, representative workspace</td><td>Voice channel, workstreams, unified routing, SIP UUI and X-headers, proactive engagement (outbound), consult with AI agents, live transcription and translation, Customer Intent Agent, Teams expert collaboration.</td></tr>
-          <tr><td><strong>Teams Phone</strong></td><td>Phone numbers and call routing in Microsoft 365</td><td>Teams Phone Agent (AI front desk with Q&amp;A, appointments via Bookings, spam detection, AI disclaimer, recording). Resource accounts of type AI Agent. Call queue overflow can go to Teams Phone Agents. Copilot Studio voice agents on Teams Phone (standard harness) support classic orchestration and basic voice only.</td></tr>
+          <tr><td><strong>Teams Phone</strong></td><td>Phone numbers and call routing in Microsoft 365</td><td>Teams Phone Agent (AI front desk with Q&amp;A, appointments via Bookings, spam detection, AI disclaimer, recording). Resource accounts of type AI Agent. Call queue overflow can go to Teams Phone Agents. Copilot Studio voice agents on Teams Phone (standard harness) use classic orchestration and basic voice.</td></tr>
           <tr><td><strong>Microsoft Foundry</strong></td><td>Code-first voice agents</td><td>Foundry voice agents (preview) with native telephony for Teams Phone extensibility (TPE) and Twilio, inbound and outbound. Voice Live API over WebSocket with client and server events, function calling, barge-in, avatars. A Foundry agent can be connected into a Customer Conversation harness orchestration.</td></tr>
         </tbody>
       </table>
     </div>
 
-    <h2 id="summary">3. Feasibility summary</h2>
+    <h2 id="summary">3. Scenario overview</h2>
     <div class="table-wrap">
       <table>
-        <thead><tr><th>#</th><th>Scenario</th><th>Main platform</th><th>Rating</th></tr></thead>
+        <thead><tr><th>#</th><th>Scenario</th><th>Main platform</th></tr></thead>
         <tbody>
-          <tr><td>1</td><td><a href="#s1">Order status and returns</a></td><td>CC harness + CCI + D365 Contact Center</td><td><span class="badge changed">Documented with changes</span></td></tr>
-          <tr><td>2</td><td><a href="#s2">Secure account change with voice biometrics</a></td><td>CC harness + CCI</td><td><span class="badge ok">Documented</span></td></tr>
-          <tr><td>3</td><td><a href="#s3">Billing dispute with warm handoff</a></td><td>CC harness + D365 Contact Center</td><td><span class="badge ok">Documented</span></td></tr>
-          <tr><td>4</td><td><a href="#s4">Returning caller, call to chat continuity</a></td><td>CC harness memory</td><td><span class="badge ok">Documented</span></td></tr>
-          <tr><td>5</td><td><a href="#s5">Multilingual service line</a></td><td>Customer Assist Agent, speech-to-speech</td><td><span class="badge ok">Documented</span></td></tr>
-          <tr><td>6</td><td><a href="#s6">Clinic or branch front desk on Teams Phone</a></td><td>Teams Phone Agent + Copilot Studio</td><td><span class="badge changed">Documented with changes</span></td></tr>
-          <tr><td>7</td><td><a href="#s7">Proactive outbound callback</a></td><td>Foundry voice agent (TPE or Twilio)</td><td><span class="badge ok">Documented (preview)</span></td></tr>
-          <tr><td>8</td><td><a href="#s8">Keep Genesys, add AI</a></td><td>CCI + CC harness Genesys channel</td><td><span class="badge ok">Documented</span></td></tr>
-          <tr><td>9</td><td><a href="#s9">Outage broadcast without republishing</a></td><td>CC harness + Dataverse + Power Apps</td><td><span class="badge poc">Pattern (PoC needed)</span></td></tr>
-          <tr><td>10</td><td><a href="#s10">Supervisor QA and error telemetry</a></td><td>CCI quality + On Error event</td><td><span class="badge ok">Documented</span></td></tr>
-          <tr><td>11</td><td><a href="#s11">Insurance first notice of loss (FNOL)</a></td><td>Foundry voice agent</td><td><span class="badge ok">Documented (preview)</span></td></tr>
-          <tr><td>12</td><td><a href="#s12">Call queue overflow to an AI agent</a></td><td>Teams Phone call queue</td><td><span class="badge ok">Documented</span></td></tr>
-          <tr><td>13</td><td><a href="#s13">Spam and robocall screening</a></td><td>Teams Phone Agent</td><td><span class="badge ok">Documented</span></td></tr>
-          <tr><td>14</td><td><a href="#s14">AI keeps assisting after handoff</a></td><td>Customer Assist Agent + D365 Contact Center</td><td><span class="badge ok">Documented</span></td></tr>
-          <tr><td>15</td><td><a href="#s15">Expert consult and AI consult during a live call</a></td><td>D365 Contact Center + Teams</td><td><span class="badge changed">Documented with changes</span></td></tr>
-          <tr><td>16</td><td><a href="#s16">Proactive outreach campaign</a></td><td>D365 proactive engagement + Copilot Studio IVR agent</td><td><span class="badge changed">Documented with changes</span></td></tr>
-          <tr><td>17</td><td><a href="#s17">Intent discovery to decide what to automate next</a></td><td>D365 Customer Intent Agent</td><td><span class="badge ok">Documented</span></td></tr>
-          <tr><td>18</td><td><a href="#s18">Fraud signal during an account takeover attempt</a></td><td>CCI biometrics and fraud</td><td><span class="badge ok">Documented (preview)</span></td></tr>
-          <tr><td>19</td><td><a href="#s19">Live translation for representatives</a></td><td>D365 Contact Center</td><td><span class="badge ok">Documented</span></td></tr>
-          <tr><td>20</td><td><a href="#s20">After-hours callback by email</a></td><td>CC harness Escalate to Email</td><td><span class="badge ok">Documented</span></td></tr>
-          <tr><td>21</td><td><a href="#s21">Web or kiosk avatar for the same agent</a></td><td>Foundry Voice Live API</td><td><span class="badge poc">Pattern (PoC needed)</span></td></tr>
-          <tr><td>22</td><td><a href="#s22">Internal IT and HR help desk line</a></td><td>Teams Phone + Copilot Studio</td><td><span class="badge changed">Documented with changes</span></td></tr>
+          <tr><td>1</td><td><a href="#s1">Order status and returns</a></td><td>CC harness + CCI + D365 Contact Center</td></tr>
+          <tr><td>2</td><td><a href="#s2">Secure account change with voice biometrics</a></td><td>CC harness + CCI</td></tr>
+          <tr><td>3</td><td><a href="#s3">Billing dispute with warm handoff</a></td><td>CC harness + D365 Contact Center</td></tr>
+          <tr><td>4</td><td><a href="#s4">Returning caller, call to chat continuity</a></td><td>CC harness memory</td></tr>
+          <tr><td>5</td><td><a href="#s5">Multilingual service line</a></td><td>Customer Assist Agent, speech-to-speech</td></tr>
+          <tr><td>6</td><td><a href="#s6">Clinic or branch front desk on Teams Phone</a></td><td>Teams Phone Agent + Copilot Studio</td></tr>
+          <tr><td>7</td><td><a href="#s7">Proactive outbound callback</a></td><td>Foundry voice agent (TPE or Twilio)</td></tr>
+          <tr><td>8</td><td><a href="#s8">Keep Genesys, add AI</a></td><td>CCI + CC harness Genesys channel</td></tr>
+          <tr><td>9</td><td><a href="#s9">Outage broadcast without republishing</a></td><td>CC harness + Dataverse + Power Apps</td></tr>
+          <tr><td>10</td><td><a href="#s10">Supervisor QA and error telemetry</a></td><td>CCI quality + On Error event</td></tr>
+          <tr><td>11</td><td><a href="#s11">Insurance first notice of loss (FNOL)</a></td><td>Foundry voice agent</td></tr>
+          <tr><td>12</td><td><a href="#s12">Call queue overflow to an AI agent</a></td><td>Teams Phone call queue</td></tr>
+          <tr><td>13</td><td><a href="#s13">Spam and robocall screening</a></td><td>Teams Phone Agent</td></tr>
+          <tr><td>14</td><td><a href="#s14">AI keeps assisting after handoff</a></td><td>Customer Assist Agent + D365 Contact Center</td></tr>
+          <tr><td>15</td><td><a href="#s15">Expert consult and AI consult during a live call</a></td><td>D365 Contact Center + Teams</td></tr>
+          <tr><td>16</td><td><a href="#s16">Proactive outreach campaign</a></td><td>D365 proactive engagement + Copilot Studio IVR agent</td></tr>
+          <tr><td>17</td><td><a href="#s17">Intent discovery to decide what to automate next</a></td><td>D365 Customer Intent Agent</td></tr>
+          <tr><td>18</td><td><a href="#s18">Fraud signal during an account takeover attempt</a></td><td>CCI biometrics and fraud</td></tr>
+          <tr><td>19</td><td><a href="#s19">Live translation for representatives</a></td><td>D365 Contact Center</td></tr>
+          <tr><td>20</td><td><a href="#s20">After-hours callback by email</a></td><td>CC harness Escalate to Email</td></tr>
+          <tr><td>21</td><td><a href="#s21">Web or kiosk avatar for the same agent</a></td><td>Foundry Voice Live API</td></tr>
+          <tr><td>22</td><td><a href="#s22">Internal IT and HR help desk line</a></td><td>Teams Phone + Copilot Studio</td></tr>
         </tbody>
       </table>
     </div>
-    <p><strong>Result:</strong> All 22 scenarios can be built with the given toolset. 16 are documented as described, 4 needed a different path than first outlined, and 2 are sound patterns that need a proof of concept.</p>
 
     <h2 id="scenarios">4. Scenarios</h2>
 
@@ -118,15 +107,10 @@
       <ol>
         <li>Create a Customer Conversation agent in Copilot Studio or the CCI portal. Primary agent plus sub-agents "Order status" and "Returns".</li>
         <li>Tools: connector or REST API for order lookup, workflow for creating the return.</li>
-        <li>Voice tuning: use <strong>Server VAD</strong> for short answers like order numbers (suggested start: threshold 0.6, prefix padding 300 ms, silence 750 ms). Use Semantic VAD for open questions.</li>
+        <li>Voice tuning: use <strong>Server VAD</strong> for short answers like order numbers (suggested start: threshold 0.6, prefix padding 300 ms, silence 750 ms), with confirmation prompts for read-back. Use Semantic VAD for open questions.</li>
         <li>Test in the Preview tab, then build an Evaluate test set with 20 to 30 spoken order-number variants.</li>
         <li>Deploy: demo website first, then the Dynamics 365 Contact Center channel <strong>from the CCI portal</strong> (Omnichannel Admin).</li>
       </ol>
-      <h4>Feasibility check: <span class="badge changed">Documented with changes</span></h4>
-      <ul>
-        <li>Corrected: the first draft used the classic D365 path ("add an IVR agent to the workstream"). That path is for standard Copilot Studio agents. Customer Conversation agents are connected to a contact center from the CCI portal only.</li>
-        <li>Corrected: external speech grammars are documented for classic D365 IVR agents, not for the Customer Conversation harness. Use VAD settings and confirmation prompts instead.</li>
-      </ul>
     </section>
 
     <section class="scenario" id="s2" aria-labelledby="s2-h">
@@ -145,10 +129,9 @@
         <li>Identity lookup: phone number and/or account number against the Dataverse Contact or Account table. Pick the authentication policy level.</li>
         <li>In the CCI portal, set consent, confidence thresholds, retry limits, fallbacks and human-review rules.</li>
         <li>Gate "Change address" and "Change bank details" skills behind successful authentication.</li>
-        <li>Add the "Biometric voiceprint unenrollment" skill (unenrolment is a skill, not an event).</li>
+        <li>Add the "Biometric voiceprint unenrollment" skill.</li>
         <li>Do a DPIA and legal review of the consent wording. Voice biometrics is special category data under GDPR.</li>
       </ol>
-      <h4>Feasibility check: <span class="badge ok">Documented</span> (preview)</h4>
     </section>
 
     <section class="scenario" id="s3" aria-labelledby="s3-h">
@@ -168,7 +151,6 @@
         <li>For legacy PBX scenarios with direct routing, carry context in SIP UUI or X-headers.</li>
         <li>Track resolution rate, escalation rate, resolution time, escalation time and average sentiment on dashboards.</li>
       </ol>
-      <h4>Feasibility check: <span class="badge ok">Documented</span></h4>
     </section>
 
     <section class="scenario" id="s4" aria-labelledby="s4-h">
@@ -187,7 +169,6 @@
         <li>Configure a shared contact identifier so phone and authenticated web chat map to the same customer.</li>
         <li>Retention is 30 days of short-term context. Document this in the privacy notice.</li>
       </ol>
-      <h4>Feasibility check: <span class="badge ok">Documented</span> (preview)</h4>
     </section>
 
     <section class="scenario" id="s5" aria-labelledby="s5-h">
@@ -199,11 +180,9 @@
       </ul>
       <h4>Implementation outline</h4>
       <ol>
-        <li>Use Customer Assist Agent with speech-to-speech, which supports dynamic language switching within one conversation.</li>
+        <li>Use Customer Assist Agent with speech-to-speech, which supports dynamic language switching within one conversation. Check the supported language list for your locales.</li>
         <li>Pass the detected language into escalation context and route to language-specific queues in Dynamics 365 Contact Center.</li>
       </ol>
-      <h4>Feasibility check: <span class="badge ok">Documented</span></h4>
-      <p>Check the supported language list for your locales before committing.</p>
     </section>
 
     <section class="scenario" id="s6" aria-labelledby="s6-h">
@@ -217,21 +196,17 @@
       <p><strong>Path A: Teams Phone Agent + standard Copilot Studio voice agent</strong></p>
       <ol>
         <li>Teams Phone Agent handles Q&amp;A and appointments (Microsoft Bookings integration in Teams admin center).</li>
-        <li>For custom workflows, hand off to a Copilot Studio voice agent. It must use <strong>classic orchestration</strong> and a <strong>basic</strong> voice agent. Real-time voice agents and generative orchestration are not supported on this channel.</li>
+        <li>For custom workflows, hand off to a Copilot Studio voice agent that uses <strong>classic orchestration</strong> and a <strong>basic</strong> voice agent.</li>
         <li>Use <strong>tags</strong> to pass transfer targets (call queues, auto attendants) without hardcoding.</li>
         <li>Teams admin center: resource account type "AI Agent", Teams Phone Resource Account license, phone number (Calling Plans, Operator Connect or Direct Routing), link the agent.</li>
-        <li>Agent authentication must be set to "No authentication" for this channel.</li>
+        <li>Set agent authentication to "No authentication" for this channel.</li>
       </ol>
       <p><strong>Path B: Customer Conversation harness agent deployed to the Teams Phone channel</strong></p>
       <ol>
         <li>Build the agent on the harness and deploy it to the Teams Phone channel from the Deploy page.</li>
         <li>Use "Escalate to Teams Phone" to transfer to people or queues.</li>
       </ol>
-      <h4>Feasibility check: <span class="badge changed">Documented with changes</span></h4>
-      <ul>
-        <li>Corrected: tags and the classic orchestration constraint belong to Path A only. They were mixed with harness features in the first draft.</li>
-        <li>The Copilot Studio and Teams Phone integration entered public preview on October 22, 2026 and may need tenant enablement.</li>
-      </ul>
+      <p>The Copilot Studio and Teams Phone integration entered public preview on October 22, 2026 and may need tenant enablement.</p>
     </section>
 
     <section class="scenario" id="s7" aria-labelledby="s7-h">
@@ -252,8 +227,7 @@
         <li>Enable truncation-aware handling so stored history matches what the caller actually heard.</li>
         <li>Optional: connect this Foundry agent into a Customer Conversation orchestration via "Connect existing agent". The harness then provides events, escalation and memory.</li>
       </ol>
-      <h4>Feasibility check: <span class="badge ok">Documented</span> (Foundry voice agents are in preview)</h4>
-      <p>For application-managed telephony, the Call Center Voice Agent Accelerator with Azure Communication Services is the documented alternative.</p>
+      <p>For application-managed telephony, the Call Center Voice Agent Accelerator with Azure Communication Services is an alternative. Foundry voice agents are in preview.</p>
     </section>
 
     <section class="scenario" id="s8" aria-labelledby="s8-h">
@@ -268,7 +242,6 @@
         <li>Deploy the agent from Scenarios 1 to 3 to the Genesys channel.</li>
         <li>Other platforms (Cisco, Avaya, others) use the universal connector or "Bring your own".</li>
       </ol>
-      <h4>Feasibility check: <span class="badge ok">Documented</span> (preview)</h4>
     </section>
 
     <section class="scenario" id="s9" aria-labelledby="s9-h">
@@ -283,10 +256,9 @@
       <ol>
         <li>Dataverse table "Broadcast messages" (text, language, active from, active to).</li>
         <li>Power Apps model-driven or canvas app for service leads.</li>
-        <li>In Conversation Start, call a tool (connector or workflow) that reads the active message and plays it before intent classification.</li>
+        <li>In Conversation Start, call a tool (connector or workflow) that reads the active message and plays it before intent classification. Events are topics, so this follows the same rule manager pattern used for IVR agents in Dynamics 365 Contact Center.</li>
+        <li>Measure the added latency at call start.</li>
       </ol>
-      <h4>Feasibility check: <span class="badge poc">Pattern (PoC needed)</span></h4>
-      <p>Microsoft documents this "rule manager" pattern for classic Copilot Studio IVR agents in Dynamics 365 Contact Center. Events in the harness are topics, so the same approach should work, but it is not documented for the harness. Measure the added latency at call start.</p>
     </section>
 
     <section class="scenario" id="s10" aria-labelledby="s10-h">
@@ -304,7 +276,6 @@
         <li>Edit the On Error event to log to Azure Analytics with agent version, tool name and error details.</li>
         <li>Add failed conversations to Evaluate test sets as regression cases.</li>
       </ol>
-      <h4>Feasibility check: <span class="badge ok">Documented</span> (preview)</h4>
     </section>
 
     <section class="scenario" id="s11" aria-labelledby="s11-h">
@@ -319,9 +290,8 @@
         <li>Foundry voice agent with function calls that fill a claim object (incident description, location, parties involved, policy number).</li>
         <li>Write the claim to Dynamics 365 or the claims system, and read back the reference number.</li>
         <li>Escalate to a person if anyone is injured or the caller is distressed.</li>
-        <li>Use Microsoft's open-source <a href="https://github.com/microsoft/call-center-ai">call-center-ai</a> repository as design inspiration only. It is not a supported product.</li>
+        <li>Use Microsoft's open-source <a href="https://github.com/microsoft/call-center-ai">call-center-ai</a> repository as design inspiration. It is not a supported product.</li>
       </ol>
-      <h4>Feasibility check: <span class="badge ok">Documented</span> (Foundry preview)</h4>
     </section>
 
     <section class="scenario" id="s12" aria-labelledby="s12-h">
@@ -335,7 +305,6 @@
         <li>In the Teams call queue, set exception handling for: no agents logged in, too many callers waiting, or wait time over the limit.</li>
         <li>Redirect to a Teams Phone Agent (<a href="#s6">Scenario 6</a>) that handles the top three intents.</li>
       </ol>
-      <h4>Feasibility check: <span class="badge ok">Documented</span></h4>
     </section>
 
     <section class="scenario" id="s13" aria-labelledby="s13-h">
@@ -352,8 +321,6 @@
         <li>Set a maximum call length with a disconnect message as a safety limit.</li>
         <li>Optional: automatic recording for review.</li>
       </ol>
-      <h4>Feasibility check: <span class="badge ok">Documented</span></h4>
-      <p>Microsoft Learn pages show mixed status (one says generally available, another says Frontier Public Preview). Confirm availability for your tenant.</p>
     </section>
 
     <section class="scenario" id="s14" aria-labelledby="s14-h">
@@ -367,7 +334,6 @@
         <li>Customer Assist Agent resolves autonomously, recognises when a human is needed and transfers with full context to Dynamics 365 Contact Center.</li>
         <li>After handoff it continues to assist the representative in real time.</li>
       </ol>
-      <h4>Feasibility check: <span class="badge ok">Documented</span></h4>
     </section>
 
     <section class="scenario" id="s15" aria-labelledby="s15-h">
@@ -380,11 +346,10 @@
       <h4>Implementation outline</h4>
       <ol>
         <li>Teams expert collaboration during live engagements in Dynamics 365 Contact Center.</li>
-        <li><strong>Consult with AI agents</strong> (added after verification): turn the setting on, make a voice-enabled AI agent available for consult. The representative selects Consult, then the AI Agents tab. The AI agent runs its workflow (disclosure, consent capture, PIN check) and leaves. Options: keep the representative on hold, pause recording and transcription during consult.</li>
+        <li><strong>Consult with AI agents:</strong> turn the setting on, make a voice-enabled AI agent available for consult. The representative selects Consult, then the AI Agents tab. The AI agent runs its workflow (disclosure, consent capture, PIN check) and leaves. Options: keep the representative on hold, pause recording and transcription during consult.</li>
         <li>Configure handoff back to a representative in the agent topic.</li>
       </ol>
-      <h4>Feasibility check: <span class="badge changed">Documented with changes</span></h4>
-      <p>Added: AI consult was not in the first draft. It is a production-ready preview feature. Voice-enabled AI agents can join a call only through the consult option.</p>
+      <p>Voice-enabled AI agents join a call through the consult option. This is a preview feature.</p>
     </section>
 
     <section class="scenario" id="s16" aria-labelledby="s16-h">
@@ -397,13 +362,12 @@
       <h4>Implementation outline</h4>
       <ol>
         <li>Dynamics 365 Contact Center proactive engagement: outbound voice workstream, audience via file upload, CCaaS API, MCP (preview) or Customer Insights journeys.</li>
-        <li>Add an AI agent to the outbound workstream (AI-led engagement).</li>
+        <li>Add a standard Copilot Studio voice IVR agent (voice IVR template) to the outbound workstream (AI-led engagement).</li>
         <li>Enable the answering machine detection system topic and personalise the voicemail message.</li>
         <li>Pass customer and campaign context into the agent with global variables ("External sources can set values"). Send outcomes back with variables marked "External sources can receive the value". They appear in the proactive delivery table.</li>
         <li>Your organisation must honour consent and opt-out preferences.</li>
       </ol>
-      <h4>Feasibility check: <span class="badge changed">Documented with changes</span></h4>
-      <p>Corrected: the documented outbound path uses a standard Copilot Studio voice IVR agent (voice IVR template), not a Customer Conversation harness agent. For harness-based outbound, use Foundry (<a href="#s7">Scenario 7</a>) or confirm support with Microsoft.</p>
+      <p>For code-first outbound calling, use a Foundry voice agent (<a href="#s7">Scenario 7</a>).</p>
     </section>
 
     <section class="scenario" id="s17" aria-labelledby="s17-h">
@@ -417,7 +381,6 @@
         <li>Enable Customer Intent Agent in Dynamics 365 Contact Center.</li>
         <li>Each sprint, take the top unautomated intents and add them as sub-agents to the harness agent.</li>
       </ol>
-      <h4>Feasibility check: <span class="badge ok">Documented</span></h4>
     </section>
 
     <section class="scenario" id="s18" aria-labelledby="s18-h">
@@ -433,7 +396,6 @@
         <li>In CCI, combine identity evidence, voice biometrics, fraud signals and MFA into an interaction outcome.</li>
         <li>On a risky outcome, require the SMS one-time passcode, then route to a specialist queue for human review.</li>
       </ol>
-      <h4>Feasibility check: <span class="badge ok">Documented</span> (preview)</h4>
     </section>
 
     <section class="scenario" id="s19" aria-labelledby="s19-h">
@@ -447,7 +409,6 @@
         <li>Enable live transcription and translation in Dynamics 365 Contact Center.</li>
         <li>Combine with <a href="#s5">Scenario 5</a>: the AI handles the caller's language itself, and translation covers the human part of the call.</li>
       </ol>
-      <h4>Feasibility check: <span class="badge ok">Documented</span></h4>
     </section>
 
     <section class="scenario" id="s20" aria-labelledby="s20-h">
@@ -464,7 +425,6 @@
         <li>Use the Escalate to Email path to send it to the team mailbox.</li>
         <li>Confirm the next step in End of Conversation.</li>
       </ol>
-      <h4>Feasibility check: <span class="badge ok">Documented</span></h4>
     </section>
 
     <section class="scenario" id="s21" aria-labelledby="s21-h">
@@ -477,9 +437,8 @@
       <ol>
         <li>Use the Voice Live API avatar feature (standard or custom avatar synchronised with audio, WebRTC via <code>session.avatar.connect</code>).</li>
         <li>Reuse the same Foundry agent, tools and knowledge as the phone channel.</li>
+        <li>Build the web or kiosk front end in custom code. Check avatar region availability.</li>
       </ol>
-      <h4>Feasibility check: <span class="badge poc">Pattern (PoC needed)</span></h4>
-      <p>The avatar is documented for the Voice Live API. It is not a Copilot Studio harness channel, so this scenario needs custom front-end code. Check avatar region availability.</p>
     </section>
 
     <section class="scenario" id="s22" aria-labelledby="s22-h">
@@ -492,38 +451,22 @@
       <ol>
         <li>Teams Phone resource account without a phone number: only users in your tenant can call it over VoIP from the Teams client.</li>
         <li>Use tags to transfer to the IT or HR call queue (Path A in <a href="#s6">Scenario 6</a>).</li>
+        <li>The Teams Phone channel uses "No authentication", so identify the caller from the Teams caller ID through a lookup.</li>
+        <li>Keep sensitive actions such as password resets behind a separate verification step (for example, a one-time code to a registered device).</li>
       </ol>
-      <h4>Feasibility check: <span class="badge changed">Documented with changes</span></h4>
-      <p>Corrected: on the Teams Phone channel the Copilot Studio agent must use "No authentication", so the agent does not know the caller's Entra identity by default. Identify the caller from the Teams caller ID through a lookup, and keep sensitive actions such as password resets behind a separate verification step (for example, a one-time code to a registered device).</p>
     </section>
 
-    <h2 id="corrections">5. Corrections from the first draft</h2>
-    <div class="table-wrap">
-      <table>
-        <thead><tr><th>Scenario</th><th>First draft</th><th>Corrected</th></tr></thead>
-        <tbody>
-          <tr><td>1</td><td>Add agent to D365 workstream as IVR agent</td><td>Deploy Customer Conversation agent to D365 Contact Center from the CCI portal (Omnichannel Admin)</td></tr>
-          <tr><td>1</td><td>Speech grammars for order numbers</td><td>Grammars are for classic IVR agents. Use Server VAD tuning and confirmation</td></tr>
-          <tr><td>6</td><td>Tags and classic orchestration mixed with harness features</td><td>Two separate paths: Teams Phone Agent + standard agent, or harness agent on Teams Phone channel</td></tr>
-          <tr><td>9</td><td>Documented pattern</td><td>Documented for classic IVR agents only. PoC needed on the harness</td></tr>
-          <tr><td>15</td><td>Teams expert consult only</td><td>Added consult with AI agents (production-ready preview)</td></tr>
-          <tr><td>16</td><td>Harness agent for outbound</td><td>Documented outbound uses a standard Copilot Studio voice IVR agent</td></tr>
-          <tr><td>22</td><td>Internal line with authentication</td><td>Teams Phone channel requires "No authentication". Verify by other means</td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h2 id="risks">6. Risks and points to check</h2>
+    <h2 id="notes">5. Planning notes</h2>
     <ul>
-      <li><strong>Preview status.</strong> The Customer Conversation harness, CCI, Foundry voice agents and the Copilot Studio Teams Phone integration are all preview or prerelease. Preview features are not meant for production use.</li>
-      <li><strong>Tenant enablement.</strong> The Copilot Studio and Teams Phone Agent integration has been gated and may need enablement through Microsoft support.</li>
-      <li><strong>EU data residency.</strong> For standard-harness real-time agents, EU Data Boundary customers cannot use GPT-Realtime or GPT-Realtime-Mini because they need cross-geo processing. GPT-5-Chat (preview) supports in-region processing in the EU. Confirm the model and data location for the Customer Conversation harness and Foundry speech-to-speech before go-live in Germany.</li>
+      <li><strong>Preview status.</strong> The Customer Conversation harness, CCI, Foundry voice agents and the Copilot Studio Teams Phone integration are preview or prerelease features.</li>
+      <li><strong>Tenant enablement.</strong> The Copilot Studio and Teams Phone Agent integration may need enablement through Microsoft support.</li>
+      <li><strong>EU data residency.</strong> For standard-harness real-time agents, EU Data Boundary customers cannot use GPT-Realtime or GPT-Realtime-Mini because they need cross-geo processing. GPT-5-Chat (preview) supports in-region processing in the EU. Confirm the model and data location before go-live in Germany.</li>
       <li><strong>Cost.</strong> The Customer Conversation harness uses Copilot Credits for using, building, testing and evaluating. Large Evaluate runs count.</li>
-      <li><strong>Biometrics and recording.</strong> DPIA, consent wording, works council agreement (Germany) for recording and QA scoring of employees.</li>
-      <li><strong>Latency.</strong> Generative orchestration on the Teams Phone channel (standard harness) can add 5 to 6 seconds. That is why classic orchestration is required there.</li>
+      <li><strong>Biometrics and recording.</strong> Plan a DPIA, consent wording and a works council agreement (Germany) for recording and QA scoring of employees.</li>
+      <li><strong>Latency.</strong> Generative orchestration on the Teams Phone channel (standard harness) can add 5 to 6 seconds, which is why classic orchestration is used there.</li>
     </ul>
 
-    <h2 id="build-order">7. Suggested build order</h2>
+    <h2 id="build-order">6. Suggested build order</h2>
     <div class="table-wrap">
       <table>
         <thead><tr><th>Sprint</th><th>Scenarios</th><th>Goal</th></tr></thead>
@@ -537,7 +480,7 @@
       </table>
     </div>
 
-    <h2 id="sources">8. Sources</h2>
+    <h2 id="sources">7. Sources</h2>
     <h3>Copilot Studio, Customer Conversation harness</h3>
     <ul>
       <li><a href="https://learn.microsoft.com/en-us/microsoft-copilot-studio/agents-experience/overview-customer-conversation">Harness overview</a></li>
